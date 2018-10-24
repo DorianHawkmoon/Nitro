@@ -17,7 +17,9 @@
 #define OPTION_OUTPUT IOSTREAM_OUTPUT
 #endif
 
-
+#pragma warning( push )
+#pragma warning( disable : 4244 ) 
+#pragma warning( disable : 4101 ) 
 
 // maximum mumber of lines the output console should have
 static const WORD MAX_CONSOLE_LINES = 500;
@@ -26,7 +28,7 @@ static bool start = false;
 #if defined(OPTION_OUTPUT) && OPTION_OUTPUT==IOSTREAM_OUTPUT
 void RedirectIOToConsole() {
 	int hConHandle;
-	long lStdHandle;
+	long long lStdHandle;
 	CONSOLE_SCREEN_BUFFER_INFO coninfo;
 	FILE *fp;
 
@@ -34,7 +36,7 @@ void RedirectIOToConsole() {
 	AllocConsole();
 
 	// redirect unbuffered STDOUT to the console
-	lStdHandle = (long)GetStdHandle(STD_OUTPUT_HANDLE);
+	lStdHandle = (long long)GetStdHandle(STD_OUTPUT_HANDLE);
 	hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
 	fp = _fdopen(hConHandle, "w");
 	*stdout = *fp;
@@ -42,7 +44,7 @@ void RedirectIOToConsole() {
 
 
 	// redirect unbuffered STDERR to the console
-	lStdHandle = (long)GetStdHandle(STD_ERROR_HANDLE);
+	lStdHandle = (long long)GetStdHandle(STD_ERROR_HANDLE);
 	hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
 	fp = _fdopen(hConHandle, "w");
 	*stderr = *fp;
@@ -92,3 +94,5 @@ void log(const char file[], int line, const char* format, ...) {
 #endif
 
 }
+
+#pragma warning( pop )

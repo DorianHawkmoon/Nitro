@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
@@ -10,12 +9,24 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShapeOverlay", "ShapeOverla
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lib_json", "..\external\jsoncpp-1.8.4\makefiles\msvc2010\lib_json.vcxproj", "{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "external", "external", "{A3689ADC-C6F0-4E12-AFA2-FE6ADAE0C4B7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{372E6CA0-133C-4A8E-901C-03E0928F7C97}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7} = {C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}
+		{A187D5C5-2FFF-46BB-BE48-7C032AAA2B49} = {A187D5C5-2FFF-46BB-BE48-7C032AAA2B49}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "..\external\googletest-1.8.1\googletest\msvc\2010\gtest.vcxproj", "{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
+		Testing|x64 = Testing|x64
+		Testing|x86 = Testing|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A187D5C5-2FFF-46BB-BE48-7C032AAA2B49}.Debug|x64.ActiveCfg = Debug|x64
@@ -26,6 +37,10 @@ Global
 		{A187D5C5-2FFF-46BB-BE48-7C032AAA2B49}.Release|x64.Build.0 = Release|x64
 		{A187D5C5-2FFF-46BB-BE48-7C032AAA2B49}.Release|x86.ActiveCfg = Release|Win32
 		{A187D5C5-2FFF-46BB-BE48-7C032AAA2B49}.Release|x86.Build.0 = Release|Win32
+		{A187D5C5-2FFF-46BB-BE48-7C032AAA2B49}.Testing|x64.ActiveCfg = Testing|x64
+		{A187D5C5-2FFF-46BB-BE48-7C032AAA2B49}.Testing|x64.Build.0 = Testing|x64
+		{A187D5C5-2FFF-46BB-BE48-7C032AAA2B49}.Testing|x86.ActiveCfg = Testing|Win32
+		{A187D5C5-2FFF-46BB-BE48-7C032AAA2B49}.Testing|x86.Build.0 = Testing|Win32
 		{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}.Debug|x64.ActiveCfg = Debug|x64
 		{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}.Debug|x64.Build.0 = Debug|x64
 		{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}.Debug|x86.ActiveCfg = Debug|Win32
@@ -34,11 +49,39 @@ Global
 		{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}.Release|x64.Build.0 = Release|x64
 		{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}.Release|x86.ActiveCfg = Release|Win32
 		{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}.Release|x86.Build.0 = Release|Win32
+		{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}.Testing|x64.ActiveCfg = Testing|x64
+		{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}.Testing|x64.Build.0 = Testing|x64
+		{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}.Testing|x86.ActiveCfg = Testing|Win32
+		{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}.Testing|x86.Build.0 = Testing|Win32
+		{372E6CA0-133C-4A8E-901C-03E0928F7C97}.Debug|x64.ActiveCfg = Testing|x64
+		{372E6CA0-133C-4A8E-901C-03E0928F7C97}.Debug|x64.Build.0 = Testing|x64
+		{372E6CA0-133C-4A8E-901C-03E0928F7C97}.Debug|x86.ActiveCfg = Testing|Win32
+		{372E6CA0-133C-4A8E-901C-03E0928F7C97}.Debug|x86.Build.0 = Testing|Win32
+		{372E6CA0-133C-4A8E-901C-03E0928F7C97}.Release|x64.ActiveCfg = Testing|x64
+		{372E6CA0-133C-4A8E-901C-03E0928F7C97}.Release|x64.Build.0 = Testing|x64
+		{372E6CA0-133C-4A8E-901C-03E0928F7C97}.Release|x86.ActiveCfg = Testing|Win32
+		{372E6CA0-133C-4A8E-901C-03E0928F7C97}.Release|x86.Build.0 = Testing|Win32
+		{372E6CA0-133C-4A8E-901C-03E0928F7C97}.Testing|x64.ActiveCfg = Testing|x64
+		{372E6CA0-133C-4A8E-901C-03E0928F7C97}.Testing|x64.Build.0 = Testing|x64
+		{372E6CA0-133C-4A8E-901C-03E0928F7C97}.Testing|x86.ActiveCfg = Testing|Win32
+		{372E6CA0-133C-4A8E-901C-03E0928F7C97}.Testing|x86.Build.0 = Testing|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Debug|x64.ActiveCfg = Release|x64
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Debug|x86.ActiveCfg = Release|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Release|x64.ActiveCfg = Release|x64
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Release|x86.ActiveCfg = Release|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Testing|x64.ActiveCfg = Testing|x64
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Testing|x64.Build.0 = Testing|x64
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Testing|x86.ActiveCfg = Testing|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Testing|x86.Build.0 = Testing|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89} = {A3689ADC-C6F0-4E12-AFA2-FE6ADAE0C4B7}
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7} = {A3689ADC-C6F0-4E12-AFA2-FE6ADAE0C4B7}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DDD107A7-1549-4853-A469-43F032C30612}
+		SolutionGuid = {27D41BC6-29D4-3EFF-A838-9487C1636DE8}
 	EndGlobalSection
 EndGlobal

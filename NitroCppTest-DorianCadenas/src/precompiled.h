@@ -4,6 +4,7 @@
 
 //usually used
 #include <iostream>
+#include <string>
 #include "Log.h"
 #include "Utils.h"
 

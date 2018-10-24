@@ -4,6 +4,9 @@
     <Filter Include="src">
       <UniqueIdentifier>{e655b039-7ce7-4fe3-98ba-901b09891b2b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\shapes">
+      <UniqueIdentifier>{1bb4eb6c-26d3-4233-8f97-869103dfb98a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp">
@@ -15,6 +18,21 @@
     <ClCompile Include="..\..\src\Log.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\ShapeIntersection.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Reader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\shapes\Shape.cpp">
+      <Filter>src\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\shapes\ShapeFactory.cpp">
+      <Filter>src\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\shapes\Rectangle.cpp">
+      <Filter>src\shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\precompiled.h">
@@ -25,6 +43,21 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Utils.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ShapeIntersection.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Reader.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shapes\Shape.h">
+      <Filter>src\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shapes\ShapeFactory.h">
+      <Filter>src\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shapes\Rectangle.h">
+      <Filter>src\shapes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
