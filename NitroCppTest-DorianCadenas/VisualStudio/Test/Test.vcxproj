@@ -13,14 +13,17 @@
   <ItemGroup>
     <ClCompile Include="..\..\test\Main.cpp" />
     <ClCompile Include="..\..\test\serialization\ReaderTest.cpp" />
-    <ClCompile Include="..\..\test\ShapeFactoryTest.cpp" />
     <ClCompile Include="..\..\test\shapes\RectangleTest.cpp" />
+    <ClCompile Include="..\..\test\shapes\ShapeFactoryTest.cpp" />
     <ClCompile Include="..\..\test\utils\UtilsTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShapeOverlay\ShapeOverlay.vcxproj">
       <Project>{a187d5c5-2fff-46bb-be48-7c032aaa2b49}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\test\serialization\ReaderTest.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

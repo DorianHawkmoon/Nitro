@@ -171,35 +171,37 @@ TEST(NAME_CLASS, CopyRectangle) {
 }
 
 TEST(NAME_CLASS, IncorrectParameters) {
-	Json::Value json;
-	Rectangle rectangle;
-
-	json["x"] = 100;
 	
-	EXPECT_THROW({
-			try {
-				rectangle.Deserialize(json);
-			} catch (const std::invalid_argument& error) {
-				EXPECT_STREQ("Rectangle::Deserialize Lack of arguments", error.what());
-				throw;
-			}
-		}, std::invalid_argument);
+		Json::Value json;
+		Rectangle rectangle;
 
-	json["y"] = 150;
-	json["w"] = 200;
+		json["x"] = 100;
 
-	EXPECT_THROW({
-			try {
-				rectangle.Deserialize(json);
-			} catch (const std::invalid_argument& error) {
-				EXPECT_STREQ("Rectangle::Deserialize Lack of arguments", error.what());
-				throw;
-			}
-		}, std::invalid_argument);
+		EXPECT_THROW({
+				try {
+					rectangle.Deserialize(json);
+				} catch (const std::invalid_argument& error) {
+					EXPECT_STREQ("Rectangle::Deserialize Lack of arguments", error.what());
+					throw;
+				}
+			}, std::invalid_argument);
+
+		json["y"] = 150;
+		json["w"] = 200;
+
+		EXPECT_THROW({
+				try {
+					rectangle.Deserialize(json);
+				} catch (const std::invalid_argument& error) {
+					EXPECT_STREQ("Rectangle::Deserialize Lack of arguments", error.what());
+					throw;
+				}
+			}, std::invalid_argument);
 
 
-	json["h"] = 200;
-	//an extra non-needed argument
-	json["another"] = 200;
-	EXPECT_NO_THROW({ rectangle.Deserialize(json); }); //should just ignore it
+		json["h"] = 200;
+		//an extra non-needed argument
+		json["another"] = 200;
+		EXPECT_NO_THROW({rectangle.Deserialize(json);}); //should just ignore it
+	
 }

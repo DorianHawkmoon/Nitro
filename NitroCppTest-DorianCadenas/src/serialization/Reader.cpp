@@ -17,24 +17,28 @@ namespace ShapeOverlay {
 		//read and parse the file
 		Json::CharReaderBuilder builder;
 		std::string errors;
-		if (!Json::parseFromStream(builder, configFile, &shapes, &errors)) {
+		bool parsed = Json::parseFromStream(builder, configFile, &shapes, &errors);
+		if (!parsed) {
 			std::string message("Reader::ParseFileShape Error parsing json file: " + errors);
 			throw std::exception(message.c_str());
 		}
 
 		//iterate the differents shapes
-		for (auto it = shapes.begin(); it != shapes.end() && maxNumberShapes > 0; ++it) {
+		for (auto it = shapes.begin(); (it != shapes.end() && maxNumberShapes > 0); ++it) {
 			Json::Value typeShape = it.key(); //get the name of the shape
 			Json::Value listSpecificShape = (*it); //get the list of instances for the especified shape
-
-			for (auto itShapes = listSpecificShape.begin(); it != shapes.end() && maxNumberShapes > 0; ++itShapes) {
+			for (auto itShapes = listSpecificShape.begin(); (itShapes != listSpecificShape.end() && maxNumberShapes > 0); ++itShapes) {
 				//create the object and deserialize it
 				std::shared_ptr<Shape> shape = factory.Create(typeShape.asString());
-				shape->Deserialize(*it);
-
-				//store and continue
-				result.push_back(shape);
-				--maxNumberShapes;
+				//control if we don't have this figure registered
+				if (shape == nullptr) {
+					throw std::exception("Reader::ParseFileShape Error, there is no registered shape");
+				} else {
+					shape->Deserialize(*itShapes);
+					//store and continue
+					result.push_back(shape);
+					--maxNumberShapes;
+				}
 			}
 		}
 

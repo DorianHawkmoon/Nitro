@@ -18,9 +18,6 @@
     <ClCompile Include="..\..\test\Main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\test\ShapeFactoryTest.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\test\utils\UtilsTest.cpp">
       <Filter>src\utils</Filter>
     </ClCompile>
@@ -30,5 +27,13 @@
     <ClCompile Include="..\..\test\serialization\ReaderTest.cpp">
       <Filter>src\serialization</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\test\shapes\ShapeFactoryTest.cpp">
+      <Filter>src\shapes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\test\serialization\ReaderTest.h">
+      <Filter>src\serialization</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

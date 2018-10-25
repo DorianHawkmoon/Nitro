@@ -22,9 +22,6 @@ namespace ShapeOverlay {
 		/// <param name="filename"></param>
 		/// <returns></returns>
 		std::vector<std::shared_ptr<Shape>> ParseFileShapes(const std::string& filename, const ShapeFactory& factory, int maxNumberShapes);
-
-
-	private:
 	};
 
 }
