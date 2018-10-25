@@ -4,6 +4,7 @@
 
 #include <string>
 #include <sstream>
+#include <stdexcept>
 
 // Delete copy constructor and assignment operator
 // Note: Scott Meyers mentions in his Effective Modern C++ book, that deleted functions should generally
@@ -27,8 +28,40 @@ namespace ShapeOverlay {
 	namespace Maths {
 		template <typename T>
 		struct Vector2 {
+			static_assert(std::is_arithmetic<T>::value, "Type must be numeric");
+
+			Vector2() = default;
+			Vector2(T x, T y) :x(x), y(y) {}
+
 			T x = 0;
 			T y = 0;
+		};
+
+		/// <summary>
+		/// Invalidate char vectors
+		/// </summary>
+		template<>
+		struct Vector2<char> {
+			Vector2() { throw std::exception(); };
+			Vector2(char x, char y) { throw std::exception(); }
+		};
+
+		/// <summary>
+		/// Invalidate strings
+		/// </summary>
+		template<>
+		struct Vector2<std::string> {
+			Vector2() { throw std::exception(); };
+			Vector2(std::string x, std::string y) { throw std::exception(); }
+		};
+
+		/// <summary>
+		/// Invalidate bools
+		/// </summary>
+		template<>
+		struct Vector2<bool> {
+			Vector2() { throw std::exception(); };
+			Vector2(bool x, bool y) { throw std::exception(); }
 		};
 	}
 }
