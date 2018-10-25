@@ -2,6 +2,7 @@
 
 #include "json/json.h"
 #include <fstream>
+#include "ShapeIntersection.h"
 
 using namespace ShapeOverlay;
 
@@ -13,6 +14,11 @@ using namespace ShapeOverlay;
 /// <param name="argv">arguments: needed the name/path of the json file</param>
 /// <returns></returns>
 int main(int argc, char *argv[]) {
+	//TODO check i have at least one input (the filename)
+
+	//TODO improve, create a config class with details like maximum number of shape for shape intersection
+
+	std::unique_ptr<ShapeIntersection> shapeIntersection(new ShapeIntersection()); //Todo pass the filename
 
 
 	return 0;

@@ -5,7 +5,8 @@
 //usually used
 #include <iostream>
 #include <string>
-#include "Log.h"
-#include "Utils.h"
+#include <memory>
+#include "utils/Log.h"
+#include "utils/Utils.h"
 
 #endif // !PRECOMPILED_H

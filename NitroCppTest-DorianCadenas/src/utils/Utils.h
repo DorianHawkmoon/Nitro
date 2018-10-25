@@ -23,6 +23,14 @@ namespace ShapeOverlay {
 			return ss.str();
 		}
 	}
+
+	namespace Maths {
+		template <typename T>
+		struct Vector2 {
+			T x = 0;
+			T y = 0;
+		};
+	}
 }
 
 #endif // !UTILS_H

@@ -12,8 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\test\Main.cpp" />
-    <ClCompile Include="..\..\test\ReaderTest.cpp" />
-    <ClCompile Include="ShapeFactoryTest.cpp" />
+    <ClCompile Include="..\..\test\serialization\ReaderTest.cpp" />
+    <ClCompile Include="..\..\test\ShapeFactoryTest.cpp" />
+    <ClCompile Include="..\..\test\shapes\RectangleTest.cpp" />
+    <ClCompile Include="..\..\test\utils\UtilsTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShapeOverlay\ShapeOverlay.vcxproj">
@@ -84,8 +86,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\output\external\gtest\$(PlatformShortName);$(SolutionDir)..\output\ShapeOverlay\$(PlatformShortName)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ShapeOverlay.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\output\external\gtest\$(PlatformShortName);$(SolutionDir)..\output\ShapeOverlay\$(PlatformShortName)\$(Configuration);$(SolutionDir)..\output\external\lib_json\$(PlatformShortName)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lib_json.lib;ShapeOverlay.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Testing|x64'">
@@ -108,8 +110,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\output\external\gtest\$(PlatformShortName);$(SolutionDir)..\output\ShapeOverlay\$(PlatformShortName)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ShapeOverlay.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\output\external\gtest\$(PlatformShortName);$(SolutionDir)..\output\ShapeOverlay\$(PlatformShortName)\$(Configuration);$(SolutionDir)..\output\external\lib_json\$(PlatformShortName)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lib_json.lib;ShapeOverlay.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

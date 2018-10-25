@@ -5,6 +5,9 @@
 #include "precompiled.h"
 #include "json/json.h"
 
+#include "shapes/ShapeFactory.h"
+#include "shapes/Shape.h"
+
 namespace ShapeOverlay {
 	class Reader {
 	public:
@@ -18,7 +21,7 @@ namespace ShapeOverlay {
 		/// </summary>
 		/// <param name="filename"></param>
 		/// <returns></returns>
-		bool ParseFileShapes(const std::string& filename);
+		std::vector<std::shared_ptr<Shape>> ParseFileShapes(const std::string& filename, const ShapeFactory& factory, int maxNumberShapes);
 
 
 	private:

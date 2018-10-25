@@ -2,11 +2,12 @@
 #ifndef SHAPE_FACTORY_H
 #define SHAPE_FACTORY_H
 
+#include "precompiled.h"
 #include <map>
+#include <string>
 #include <memory>
 #include <type_traits>
 #include <stdexcept>
-#include "Utils.h"
 #include "Shape.h"
 
 
@@ -94,9 +95,9 @@ namespace ShapeOverlay {
 		/// </summary>
 		/// <param name="type">name of the object to create</param>
 		/// <returns>Object created or nullptr if not registered</returns>
-		std::shared_ptr<Shape> Create(const std::string& type) {
+		std::shared_ptr<Shape> Create(const std::string& type) const {
 			if (factories.find(type) != factories.end()) {
-				auto& objcreator = factories[type];
+				auto& objcreator = factories.at(type);
 				return objcreator->Create();
 			}
 

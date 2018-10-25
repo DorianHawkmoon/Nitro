@@ -4,16 +4,31 @@
     <Filter Include="src">
       <UniqueIdentifier>{41b90552-a697-4282-8540-27253c063741}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{95704275-80ae-4a8e-82ce-9c48a9af811b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shapes">
+      <UniqueIdentifier>{4ca7dee4-d956-4361-b7ee-fa1d63514eb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\serialization">
+      <UniqueIdentifier>{d004e4c1-cf22-4167-a0ca-018e14d653d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\test\Main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\test\ReaderTest.cpp">
+    <ClCompile Include="..\..\test\ShapeFactoryTest.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="ShapeFactoryTest.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\..\test\utils\UtilsTest.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\shapes\RectangleTest.cpp">
+      <Filter>src\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\serialization\ReaderTest.cpp">
+      <Filter>src\serialization</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,6 +7,12 @@
     <Filter Include="src\shapes">
       <UniqueIdentifier>{1bb4eb6c-26d3-4233-8f97-869103dfb98a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\serialization">
+      <UniqueIdentifier>{bb291bbc-ebdc-4040-adeb-5c235d3d7a3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{7a346ea3-38bb-4d50-b567-8561d43eb3c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp">
@@ -15,13 +21,7 @@
     <ClCompile Include="..\..\src\precompiled.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Log.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\ShapeIntersection.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Reader.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\shapes\Shape.cpp">
@@ -33,21 +33,18 @@
     <ClCompile Include="..\..\src\shapes\Rectangle.cpp">
       <Filter>src\shapes</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\serialization\Reader.cpp">
+      <Filter>src\serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utils\Log.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\precompiled.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Log.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Utils.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\ShapeIntersection.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Reader.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\shapes\Shape.h">
@@ -58,6 +55,18 @@
     </ClInclude>
     <ClInclude Include="..\..\src\shapes\Rectangle.h">
       <Filter>src\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\Reader.h">
+      <Filter>src\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\ISerializable.h">
+      <Filter>src\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\Log.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\Utils.h">
+      <Filter>src\utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
