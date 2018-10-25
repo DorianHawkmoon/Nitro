@@ -24,6 +24,7 @@ namespace ShapeOverlay {
 		Vector2<int> GetBottomLeft() const;
 		Vector2<int> GetTopRight() const;
 		Vector2<int> GetBottomRight() const;
+		Vector2<int> GetSize() const { return size; }
 
 		virtual void Deserialize(const Json::Value& serializer) override;
 		virtual void Serialize(const Json::Value& serializer) override;
