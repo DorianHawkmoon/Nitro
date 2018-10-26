@@ -14,6 +14,13 @@ namespace ShapeOverlay {
 		Shape() = default;
 		virtual ~Shape() = default;
 
+		//TODO make tests
+		/// <summary>
+		/// String representation of the shape
+		/// </summary>
+		/// <returns></returns>
+		virtual std::string ToString() = 0;
+
 		virtual void Serialize(const Json::Value& serializer) = 0;
 		virtual void Deserialize(const Json::Value& serializer) = 0;
 	};

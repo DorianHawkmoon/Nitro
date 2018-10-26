@@ -1,5 +1,6 @@
 #include "precompiled.h"
 #include "Rectangle.h"
+#include "utils/Utils.h"
 
 namespace ShapeOverlay {
 	Rectangle::Rectangle()
@@ -23,6 +24,12 @@ namespace ShapeOverlay {
 		bottomRight.x += size.x;
 		bottomRight.y += size.y;
 		return bottomRight;
+	}
+
+	std::string Rectangle::ToString() {
+		std::stringstream result;
+		result << "Rectangle at (" << topLeft.x << "," << topLeft.y << 
+							"), w=" << size.x << ", h=" << size.y;
 	}
 
 	void Rectangle::Deserialize(const Json::Value & serializer) {

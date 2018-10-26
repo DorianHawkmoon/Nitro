@@ -5,6 +5,7 @@
 #include "precompiled.h"
 #include "shapes/ShapeFactory.h"
 #include "serialization/Reader.h"
+#include "utils/Config.h"
 
 namespace ShapeOverlay {
 	class ShapeIntersection {
@@ -12,12 +13,13 @@ namespace ShapeOverlay {
 		/// <summary>
 		/// Create object and register all the shapes
 		/// </summary>
-		ShapeIntersection(); //todo add reference for config class (to determine max number of shapes to read for example)
+		ShapeIntersection(Config config);
 		~ShapeIntersection() = default;
 
 		NO_COPY_CLASS(ShapeIntersection);
 
 	private:
+		Config config;
 		ShapeFactory shapeFactory;
 
 	public:

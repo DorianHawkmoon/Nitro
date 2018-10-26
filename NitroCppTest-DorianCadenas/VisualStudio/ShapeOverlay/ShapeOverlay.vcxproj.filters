@@ -13,6 +13,9 @@
     <Filter Include="src\utils">
       <UniqueIdentifier>{7a346ea3-38bb-4d50-b567-8561d43eb3c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\analyser">
+      <UniqueIdentifier>{8682b231-5199-4821-9f2d-4bf7846ac3e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp">
@@ -38,6 +41,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\utils\Log.cpp">
       <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\analyser\BasicAnalyser.cpp">
+      <Filter>src\analyser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +73,18 @@
     </ClInclude>
     <ClInclude Include="..\..\src\utils\Utils.h">
       <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\Config.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\shapes\AllShapes.h">
+      <Filter>src\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\analyser\Analyser.h">
+      <Filter>src\analyser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\analyser\BasicAnalyser.h">
+      <Filter>src\analyser</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

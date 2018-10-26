@@ -1,8 +1,7 @@
 #include "precompiled.h"
 
-#include "json/json.h"
-#include <fstream>
 #include "ShapeIntersection.h"
+#include "utils/Config.h"
 
 using namespace ShapeOverlay;
 
@@ -11,14 +10,29 @@ using namespace ShapeOverlay;
 /// Receive a json filename to parse the shapes
 /// </summary>
 /// <param name="argc">nubmer of arguments</param>
-/// <param name="argv">arguments: needed the name/path of the json file</param>
+/// <param name="argv">arguments: (optional) name/path of the json file</param>
 /// <returns></returns>
 int main(int argc, char *argv[]) {
-	//TODO check i have at least one input (the filename)
-	//TODO improve, create a config class with details like maximum number of shape for shape intersection
-	std::unique_ptr<ShapeIntersection> shapeIntersection(new ShapeIntersection()); //Todo pass the filename
-	shapeIntersection->ReportIntersections("Hola");
-	//TODO improve string errors report
+	std::string filename;
+
+	//check if givenf ile
+	if (argc <= 0) {
+		LOG("It is possible to give an input JSON file as an argument.\n");
+		LOG("I will use data/example.json for demostration purposes.\n");
+		filename = "data/example.json";
+
+	} else {
+		filename = argv[1];
+	}
+
+	//create the configuration for the program
+	Config config;
+
+	//create the program itself with the given configuration
+	std::unique_ptr<ShapeIntersection> shapeIntersection(new ShapeIntersection(config));
+
+	//execute the program given the json filename to process
+	shapeIntersection->ReportIntersections(filename);
 
 	return 0;
 }
