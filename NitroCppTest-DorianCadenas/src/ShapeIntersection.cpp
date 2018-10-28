@@ -5,7 +5,7 @@
 
 namespace ShapeOverlay {
 
-	ShapeIntersection::ShapeIntersection(Config config)
+	ShapeIntersection::ShapeIntersection(std::shared_ptr<Config> config)
 		: shapeFactory(),
 		config(config)
 	{
@@ -14,38 +14,51 @@ namespace ShapeOverlay {
 		shapeFactory.Register<Rectangle>("rects");
 	}
 
+
 	void ShapeIntersection::ReportIntersections(const std::string & filenameShapes) {
-		Reader reader;
-		int maxNumberShapes = config.GetMaxNumberElements();
+		int maxNumberShapes = config->GetMaxNumberElements();
 
-		//read and parse the json files, given the factory, and receive a vector of the shapes
-		//TODO get exceptions and treat it
-		std::vector<std::shared_ptr<Shape>> shapes = reader.ParseFileShapes(filenameShapes,	shapeFactory, maxNumberShapes);
+		try {
+			//given the factory, the file and
+			//read and parse the json files, given the factory, and receive a vector of the shapes
+			Reader reader;
+			reader.ParseFileShapes(filenameShapes, shapeFactory, maxNumberShapes);
+			std::vector<std::shared_ptr<Shape>> shapes = reader.GetReadShapes();
 
-		if (shapes.size() == 0) {
-			LOG("No shapes to analyze");
-		} else {
+			if (shapes.size() == 0) {
+				LOG("No shapes to analyze");
+			} else {
+				//pass the list of shapes to the analyzer TODO
+				//create the analyzer and pass it the vector
+				Analyser analyser;
+				bool results = analyser.Analyze(shapes);
 
-			//pass the list of shapes to the analyzer TODO
-			//create the analyzer and pass it the vector
-			//Analyser analyser;
-			//analyser.Analyse(shapes);
 
+				//get the results from the analyzer and display TODO
+				std::stringstream buildResult;
 
-			//get the results from the analyzer and display TODO
-			std::stringstream buildResult;
+				//write the shapes input read
+				buildResult << "Input:\n";
+				for (unsigned int i = 0; i < shapes.size(); ++i) {
+					buildResult << (i + 1) << ": " << shapes[i]->ToString() << ".\n";
+				}
+				buildResult << "\n";
 
-			buildResult << "Input:\n";
-			//write the shapes readed
-			for (int i = 0; i < shapes.size(); ++i) {
-				buildResult << (i + 1) << ": " << shapes[i]->ToString() << ".\n";
+				if (results) {
+					//write the rectangle intersections
+					buildResult << "Intersections:\n";
+					//TODO read the results and write the response
+					buildResult << analyser.GetResults();
+
+				} else {
+					buildResult << "No intersections.\n";
+				}
+				//print results TODO see LOG or just iostream(results!!)
+				LOG(buildResult.str().c_str());
 			}
-			buildResult << "\n";
-			buildResult << "Intersections:\n";
+		} catch (const std::exception& e) {
 
-			//TODO read the results and write the response
-
-			LOG(buildResult.str().c_str());
+			//TODO treat the exceptions
 		}
 	}
 

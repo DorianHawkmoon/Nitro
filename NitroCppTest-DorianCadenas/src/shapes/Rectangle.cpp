@@ -1,5 +1,6 @@
 #include "precompiled.h"
 #include "Rectangle.h"
+#include <algorithm>
 #include "utils/Utils.h"
 
 namespace ShapeOverlay {
@@ -7,20 +8,40 @@ namespace ShapeOverlay {
 		: topLeft(), size()
 	{}
 
-	Vector2<int> Rectangle::GetBottomLeft() const {
-		Vector2<int> bottomLeft = topLeft;
+	Rectangle::Rectangle(Maths::Vector2<int> topLeft, Maths::Vector2<int> size)
+		: topLeft(topLeft),
+		size(size)
+	{
+		//perfom checks
+			//size higher than zero
+		if (size.x <= 0 || size.y <= 0) {
+			throw std::invalid_argument("Rectangle::Deserialize Size should be positive");
+		}
+
+		//top left zero or greater
+		if (topLeft.x < 0 || topLeft.y < 0) {
+			throw std::invalid_argument("Rectangle::Deserialize top left point should be positive");
+		}
+	}
+
+	Rectangle::Rectangle(int top, int left, int width, int height)
+		: Rectangle(Maths::Vector2<int>(top,left), Maths::Vector2<int>(width,height))
+	{}
+
+	Maths::Vector2<int> Rectangle::GetBottomLeft() const {
+		Maths::Vector2<int> bottomLeft = topLeft;
 		bottomLeft.y += size.y;
 		return bottomLeft;
 	}
 
-	Vector2<int> Rectangle::GetTopRight() const {
-		Vector2<int> topRigth = topLeft;
+	Maths::Vector2<int> Rectangle::GetTopRight() const {
+		Maths::Vector2<int> topRigth = topLeft;
 		topRigth.x += size.x;
 		return topRigth;
 	}
 
-	Vector2<int> Rectangle::GetBottomRight() const {
-		Vector2<int> bottomRight = topLeft;
+	Maths::Vector2<int> Rectangle::GetBottomRight() const {
+		Maths::Vector2<int> bottomRight = topLeft;
 		bottomRight.x += size.x;
 		bottomRight.y += size.y;
 		return bottomRight;
@@ -28,8 +49,18 @@ namespace ShapeOverlay {
 
 	std::string Rectangle::ToString() {
 		std::stringstream result;
-		result << "Rectangle at (" << topLeft.x << "," << topLeft.y << 
+		result << NameShape() << " at (" << topLeft.x << "," << topLeft.y << 
 							"), w=" << size.x << ", h=" << size.y;
+		return result.str();
+	}
+
+	std::string Rectangle::NameShape() {
+		return std::string("Rectangle");
+	}
+
+	//TODO test
+	std::unique_ptr<Shape> Rectangle::GetClone() const {
+		return std::unique_ptr<Shape>(new Rectangle(topLeft, size));;
 	}
 
 	void Rectangle::Deserialize(const Json::Value & serializer) {
@@ -61,5 +92,46 @@ namespace ShapeOverlay {
 		}
 
 	}
+
 	void Rectangle::Serialize(const Json::Value & serializer) {}
+
+	std::unique_ptr<Shape> Rectangle::Intersection(const Shape & other) const {
+		//because in base class is virtual, this method is called
+		//from the specific class of the instance
+		//therefore, will call one of the specific Intersection
+		//example, will call Intersection(rectangle) instead of intersection(shape)
+		return other.SpecificIntersectionShape(*this);
+	}
+
+	std::unique_ptr<Shape> Rectangle::SpecificIntersectionShape(const Shape & self) const {
+		//after callin specificIntersectionshape, this method
+		//is the original calling with derived classes
+		//example: for circle looking intersection in rectangle
+		//shape->intersect(shape)
+		//rectangle->specificIntersectionShape(shape)
+		//circle->intersection(rectangle) => original call, can choose the specific intersect method
+		return self.Intersection(*this);
+	}
+
+	std::unique_ptr<Shape> Rectangle::Intersection(const Rectangle & other) const {
+		Maths::Vector2<int> otherTopLeft = other.GetTopLeft();
+		Maths::Vector2<int> otherBottomRight = other.GetBottomRight();
+		
+		
+		int leftIntersectionX = std::max(topLeft.x, topLeft.x);
+		int topIntersectionY = std::max(topLeft.y, topLeft.y);
+
+		int rightIntersectionX = std::min(GetBottomRight().x, otherBottomRight.x);
+		int bottomIntersectionY = std::min(GetBottomRight().y, otherBottomRight.y);
+
+		//is it an intersection?
+		if (leftIntersectionX < rightIntersectionX && topIntersectionY > bottomIntersectionY) {
+			Maths::Vector2<int> newTopLeft(leftIntersectionX, topIntersectionY);
+			Maths::Vector2<int> newSize(rightIntersectionX - leftIntersectionX, bottomIntersectionY - topIntersectionY);
+
+			return std::unique_ptr<Rectangle>(new Rectangle(newTopLeft, newSize));
+		} else {
+			return nullptr;
+		}
+	}
 }

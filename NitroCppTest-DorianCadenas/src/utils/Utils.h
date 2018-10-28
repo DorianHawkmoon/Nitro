@@ -17,6 +17,7 @@
 
 namespace ShapeOverlay {
 	namespace Utils {
+
 		template <typename T>
 		std::string NumberToString(T const& number) {
 			std::stringstream ss;
@@ -26,6 +27,7 @@ namespace ShapeOverlay {
 	}
 
 	namespace Maths {
+
 		template <typename T>
 		struct Vector2 {
 			static_assert(std::is_arithmetic<T>::value, "Type must be numeric");

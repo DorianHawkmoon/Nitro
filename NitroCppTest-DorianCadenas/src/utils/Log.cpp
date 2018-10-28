@@ -87,9 +87,6 @@ void log(const char file[], int line, const char* format, ...) {
 
 	//using simple console with windows or unix
 #if (defined(OPTION_OUTPUT) && OPTION_OUTPUT==IOSTREAM_OUTPUT) || !defined(OPTION_OUTPUT)
-	//TODO improve, add an option to indicate the level of log (error, warning, info...)
-		//TODO try a log to a filename
-	//std::cerr << tmp_string2;
 	std::clog << tmp_string2;
 #endif
 

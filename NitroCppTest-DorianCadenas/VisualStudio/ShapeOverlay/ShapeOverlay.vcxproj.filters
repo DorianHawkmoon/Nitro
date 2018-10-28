@@ -27,12 +27,6 @@
     <ClCompile Include="..\..\src\ShapeIntersection.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\shapes\Shape.cpp">
-      <Filter>src\shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\shapes\ShapeFactory.cpp">
-      <Filter>src\shapes</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\shapes\Rectangle.cpp">
       <Filter>src\shapes</Filter>
     </ClCompile>
@@ -42,7 +36,10 @@
     <ClCompile Include="..\..\src\utils\Log.cpp">
       <Filter>src\utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\analyser\BasicAnalyser.cpp">
+    <ClCompile Include="..\..\src\analyser\Analyser.cpp">
+      <Filter>src\analyser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\analyser\Intersection.cpp">
       <Filter>src\analyser</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,7 +80,7 @@
     <ClInclude Include="..\..\src\analyser\Analyser.h">
       <Filter>src\analyser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\analyser\BasicAnalyser.h">
+    <ClInclude Include="..\..\src\analyser\Intersection.h">
       <Filter>src\analyser</Filter>
     </ClInclude>
   </ItemGroup>

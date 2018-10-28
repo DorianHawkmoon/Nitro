@@ -8,33 +8,32 @@
 #include "utils/Config.h"
 
 namespace ShapeOverlay {
+	/// <summary>
+	/// Main class of the program, it control the flow
+	/// </summary>
 	class ShapeIntersection {
 	public:
 		/// <summary>
 		/// Create object and register all the shapes
 		/// </summary>
-		ShapeIntersection(Config config);
+		ShapeIntersection(std::shared_ptr<Config> config);
 		~ShapeIntersection() = default;
 
+		/// <summary>
+		/// It doesn't mean to be copyable
+		/// </summary>
 		NO_COPY_CLASS(ShapeIntersection);
 
 	private:
-		Config config;
-		ShapeFactory shapeFactory;
+		ShapeFactory shapeFactory; //factory of all shapes
+		std::shared_ptr<Config> config; //reference for configuration
 
 	public:
 		/// <summary>
 		/// Read the file and compute the intersections
 		/// </summary>
-		/// <param name="filenameShapes"></param>
+		/// <param name="filenameShapes">json filename/path</param>
 		void ReportIntersections(const std::string& filenameShapes);
-
-		/// <summary>
-		/// Get a reference of the shape factory
-		/// </summary>
-		/// <returns></returns>
-		const ShapeOverlay::ShapeFactory& ShapeFactory() const { return shapeFactory; }
-		ShapeOverlay::ShapeFactory& ShapeFactory() { return shapeFactory; }
 
 	};
 

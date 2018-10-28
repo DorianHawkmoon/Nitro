@@ -4,8 +4,6 @@
 
 #include "precompiled.h"
 #include <map>
-#include <string>
-#include <memory>
 #include <type_traits>
 #include <stdexcept>
 #include "Shape.h"

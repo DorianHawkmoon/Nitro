@@ -27,7 +27,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\analyser\BasicAnalyser.cpp" />
+    <ClCompile Include="..\..\src\analyser\Analyser.cpp" />
+    <ClCompile Include="..\..\src\analyser\Intersection.cpp" />
     <ClCompile Include="..\..\src\main.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">precompiled.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">precompiled.h</PrecompiledHeaderFile>
@@ -53,13 +54,11 @@
     <ClCompile Include="..\..\src\serialization\Reader.cpp" />
     <ClCompile Include="..\..\src\ShapeIntersection.cpp" />
     <ClCompile Include="..\..\src\shapes\Rectangle.cpp" />
-    <ClCompile Include="..\..\src\shapes\Shape.cpp" />
-    <ClCompile Include="..\..\src\shapes\ShapeFactory.cpp" />
     <ClCompile Include="..\..\src\utils\Log.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\analyser\Analyser.h" />
-    <ClInclude Include="..\..\src\analyser\BasicAnalyser.h" />
+    <ClInclude Include="..\..\src\analyser\Intersection.h" />
     <ClInclude Include="..\..\src\precompiled.h" />
     <ClInclude Include="..\..\src\serialization\ISerializable.h" />
     <ClInclude Include="..\..\src\serialization\Reader.h" />

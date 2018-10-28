@@ -6,30 +6,45 @@
 #include "Shape.h"
 #include "json/json.h"
 
-using namespace ShapeOverlay::Maths;
-
 namespace ShapeOverlay {
+	/// <summary>
+	/// A rectangle shape class
+	/// </summary>
 	class Rectangle : public Shape {
 
 	public:
 		Rectangle();
+		//TODO test
+		Rectangle(Maths::Vector2<int> topLeft, Maths::Vector2<int> size);
+		Rectangle(int top, int left, int width, int height);
 		~Rectangle() = default;
 
 	private:
-		Vector2<int> topLeft;
-		Vector2<int> size;
+		Maths::Vector2<int> topLeft;
+		Maths::Vector2<int> size;
 
 	public:
-		Vector2<int> GetTopLeft() const { return topLeft; }
-		Vector2<int> GetBottomLeft() const;
-		Vector2<int> GetTopRight() const;
-		Vector2<int> GetBottomRight() const;
-		Vector2<int> GetSize() const { return size; }
+		Maths::Vector2<int> GetTopLeft() const { return topLeft; }
+		Maths::Vector2<int> GetBottomLeft() const;
+		Maths::Vector2<int> GetTopRight() const;
+		Maths::Vector2<int> GetBottomRight() const;
+		Maths::Vector2<int> GetSize() const { return size; }
 
+		//TODO test
 		virtual std::string ToString() override;
+		virtual std::string NameShape() override;
+
+		virtual std::unique_ptr<Shape> GetClone() const override;
 
 		virtual void Deserialize(const Json::Value& serializer) override;
 		virtual void Serialize(const Json::Value& serializer) override;
+
+
+	public:
+		std::unique_ptr<Shape> Intersection(const Shape& other) const override;
+		std::unique_ptr<Shape> SpecificIntersectionShape(const Shape& self) const override;
+
+		std::unique_ptr<Shape> Intersection(const Rectangle& other) const override;
 	};
 
 }
