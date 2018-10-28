@@ -117,17 +117,16 @@ namespace ShapeOverlay {
 		Maths::Vector2<int> otherTopLeft = other.GetTopLeft();
 		Maths::Vector2<int> otherBottomRight = other.GetBottomRight();
 		
+		int left = std::max(topLeft.x, otherTopLeft.x);
+		int top = std::max(topLeft.y, otherTopLeft.y);
+
+		int right = std::min(GetBottomRight().x, otherBottomRight.x);
+		int bottom = std::min(GetBottomRight().y, otherBottomRight.y);
 		
-		int leftIntersectionX = std::max(topLeft.x, topLeft.x);
-		int topIntersectionY = std::max(topLeft.y, topLeft.y);
-
-		int rightIntersectionX = std::min(GetBottomRight().x, otherBottomRight.x);
-		int bottomIntersectionY = std::min(GetBottomRight().y, otherBottomRight.y);
-
 		//is it an intersection?
-		if (leftIntersectionX < rightIntersectionX && topIntersectionY > bottomIntersectionY) {
-			Maths::Vector2<int> newTopLeft(leftIntersectionX, topIntersectionY);
-			Maths::Vector2<int> newSize(rightIntersectionX - leftIntersectionX, bottomIntersectionY - topIntersectionY);
+		if (left < right && top < bottom) {
+			Maths::Vector2<int> newTopLeft(left, top);
+			Maths::Vector2<int> newSize(right - left, bottom - top);
 
 			return std::unique_ptr<Rectangle>(new Rectangle(newTopLeft, newSize));
 		} else {

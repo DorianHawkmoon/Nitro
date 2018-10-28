@@ -205,3 +205,77 @@ TEST(NAME_CLASS, IncorrectParameters) {
 		EXPECT_NO_THROW({rectangle.Deserialize(json);}); //should just ignore it
 	
 }
+
+TEST(NAME_CLASS, Constructors) {
+	Rectangle rectangle(100, 150, 200, 300);
+
+	EXPECT_TRUE(rectangle.GetTopLeft().x == 100);
+	EXPECT_TRUE(rectangle.GetTopLeft().y == 150);
+	EXPECT_TRUE(rectangle.GetSize().x == 200);
+	EXPECT_TRUE(rectangle.GetSize().y == 300);
+
+	Maths::Vector2<int> topLeft{10,15};
+	Maths::Vector2<int> size{20,30};
+	Rectangle rectangle2(topLeft,size);
+
+	EXPECT_TRUE(rectangle2.GetTopLeft().x == 10);
+	EXPECT_TRUE(rectangle2.GetTopLeft().y == 15);
+	EXPECT_TRUE(rectangle2.GetSize().x == 20);
+	EXPECT_TRUE(rectangle2.GetSize().y == 30);
+
+	Rectangle rectangle3;
+	EXPECT_TRUE(rectangle3.GetTopLeft().x == 0);
+	EXPECT_TRUE(rectangle3.GetTopLeft().y == 0);
+	EXPECT_TRUE(rectangle3.GetSize().x == 0);
+	EXPECT_TRUE(rectangle3.GetSize().y == 0);
+}
+
+TEST(NAME_CLASS, Strings) {
+	Rectangle rectangle(100, 150, 200, 300);
+	EXPECT_STRCASEEQ(rectangle.ToString().c_str(), "Rectangle at (100,150), w=200, h=300");
+	EXPECT_STRCASEEQ(rectangle.NameShape().c_str(), "Rectangle");
+}
+
+TEST(NAME_CLASS, Collisions) {
+	Rectangle rect1(100,100,250,80);
+	Rectangle rect2(120,200,250,150);
+	Rectangle rect3(140,160,250,100);
+
+	std::unique_ptr<Shape> intersection1_2 = rect1.Intersection(rect2);
+	std::unique_ptr<Shape> intersection1_3 = rect1.Intersection(rect3);
+	std::unique_ptr<Shape> intersection2_3 = rect2.Intersection(rect3);
+
+	//check intersection exists
+	ASSERT_EQ(intersection1_2, nullptr);
+	ASSERT_NE(intersection1_3, nullptr);
+	ASSERT_NE(intersection2_3, nullptr);
+
+	//check data intersection
+	EXPECT_STREQ(intersection1_3->ToString().c_str(), "Rectangle at (140,160), w=210, h=20");
+	EXPECT_STREQ(intersection2_3->ToString().c_str(), "Rectangle at (140,200), w=230, h=60");
+
+	//edge case
+	Rectangle rect4(350, 100, 10, 20);
+	Rectangle rect5(100, 180, 10, 20);
+	std::unique_ptr<Shape> intersection1_4 = rect1.Intersection(rect4);
+	std::unique_ptr<Shape> intersection1_5 = rect1.Intersection(rect5);
+
+	ASSERT_EQ(intersection1_4, nullptr);
+	ASSERT_EQ(intersection1_5, nullptr);
+
+	//fully included
+	Rectangle rect6(110, 110, 20, 20);
+	std::unique_ptr<Shape> intersection1_6 = rect1.Intersection(rect6);
+	ASSERT_NE(intersection1_6, nullptr);
+}
+
+TEST(NAME_CLASS, Clone) {
+	Rectangle rectangle(50, 10, 20, 30);
+	std::unique_ptr<Shape> clone = rectangle.GetClone();
+
+	EXPECT_NE(&rectangle, clone.get()); //compare pointers
+	EXPECT_TRUE(clone != nullptr);
+	EXPECT_STRCASEEQ(clone->ToString().c_str(), "Rectangle at (50,10), w=20, h=30");
+	
+
+}
