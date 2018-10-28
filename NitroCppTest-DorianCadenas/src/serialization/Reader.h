@@ -42,7 +42,7 @@ namespace ShapeOverlay {
 		/// <summary>
 		/// Clear the list of read shapes
 		/// </summary>
-		void ClearReadShapes() { readShapes.clear(); } //TODO add test for this
+		void ClearReadShapes() { readShapes.clear(); }
 	};
 
 }

@@ -40,13 +40,15 @@ TEST_F(NAME_CLASS, NumberShapes) {
 TEST_F(NAME_CLASS, ShapesCreated) {
 	//check if creates correctly the shapes
 	Reader reader;
-	reader.ParseFileShapes("data/test/limits.json",	*factory.get(), 2);
+	reader.ParseFileShapes("data/test/test.json",	*factory.get(), 2);
 	std::vector<std::shared_ptr<Shape>> result = reader.GetReadShapes();
 	ASSERT_EQ(result.size(), 2);
 
-	//TODO improve test
 	EXPECT_TRUE(result[0] != nullptr);
 	EXPECT_TRUE(result[1] != nullptr);
+
+	EXPECT_STRCASEEQ(result[0]->ToString().c_str(), "Rectangle at (100,100), w=250, h=80");
+	EXPECT_STRCASEEQ(result[1]->ToString().c_str(), "Rectangle at (120,200), w=250, h=150");
 }
 
 TEST_F(NAME_CLASS, Exceptions) {
