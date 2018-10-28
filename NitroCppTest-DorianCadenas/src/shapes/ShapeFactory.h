@@ -37,14 +37,14 @@ namespace ShapeOverlay {
 			/// Method for creating the object, relay on overriding method
 			/// </summary>
 			/// <returns></returns>
-			std::shared_ptr<Shape> Create() { return CreateShape(); }
+			std::unique_ptr<Shape> Create() { return std::move(CreateShape()); }
 
 		protected:
 			/// <summary>
 			/// each shape will override this method for specific creation of the object
 			/// </summary>
 			/// <returns></returns>
-			virtual std::shared_ptr<Shape> CreateShape() = 0;
+			virtual std::unique_ptr<Shape> CreateShape() = 0;
 		};
 
 
@@ -57,7 +57,7 @@ namespace ShapeOverlay {
 			ShapeCreator() = default;
 			virtual ~ShapeCreator() = default;
 		protected:
-			virtual std::shared_ptr<Shape> CreateShape() override { return std::make_shared<T>(); }
+			virtual std::unique_ptr<Shape> CreateShape() override { return std::make_unique<T>(); }
 		};
 
 
@@ -84,7 +84,7 @@ namespace ShapeOverlay {
 			}
 
 			//store the creator of the specific class
-			factories[name] = std::make_shared<ShapeCreator<T>>();
+			factories[name] = std::make_unique<ShapeCreator<T>>();
 		}
 
 		/// <summary>
