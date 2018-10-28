@@ -30,8 +30,8 @@ namespace ShapeOverlay {
 		Maths::Vector2<int> GetBottomRight() const;
 		Maths::Vector2<int> GetSize() const { return size; }
 
-		//TODO test
 		virtual std::string ToString() override;
+		virtual std::string PositionString() override;
 		virtual std::string NameShape() override;
 
 		virtual std::unique_ptr<Shape> GetClone() const override;

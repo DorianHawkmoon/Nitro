@@ -47,10 +47,16 @@ namespace ShapeOverlay {
 		return bottomRight;
 	}
 
+	std::string Rectangle::PositionString() {
+		std::stringstream result;
+		result << "at (" << topLeft.x << "," << topLeft.y <<
+			"), w=" << size.x << ", h=" << size.y;
+		return result.str();
+	}
+
 	std::string Rectangle::ToString() {
 		std::stringstream result;
-		result << NameShape() << " at (" << topLeft.x << "," << topLeft.y << 
-							"), w=" << size.x << ", h=" << size.y;
+		result << NameShape() << " " << PositionString();
 		return result.str();
 	}
 

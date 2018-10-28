@@ -234,6 +234,7 @@ TEST(NAME_CLASS, Strings) {
 	Rectangle rectangle(100, 150, 200, 300);
 	EXPECT_STRCASEEQ(rectangle.ToString().c_str(), "Rectangle at (100,150), w=200, h=300");
 	EXPECT_STRCASEEQ(rectangle.NameShape().c_str(), "Rectangle");
+	EXPECT_STRCASEEQ(rectangle.PositionString().c_str(), "at (100,150), w=200, h=300");
 }
 
 TEST(NAME_CLASS, Collisions) {

@@ -13,6 +13,9 @@
     <Filter Include="src\serialization">
       <UniqueIdentifier>{d004e4c1-cf22-4167-a0ca-018e14d653d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\analyser">
+      <UniqueIdentifier>{07c94ad7-f253-45a3-9838-a0140c6a5b63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\test\Main.cpp">
@@ -29,6 +32,9 @@
     </ClCompile>
     <ClCompile Include="..\..\test\shapes\ShapeFactoryTest.cpp">
       <Filter>src\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\analyser\Intersection.cpp">
+      <Filter>src\analyser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -34,7 +34,7 @@ namespace ShapeOverlay {
 		/// Return a copy of the shape who made the intersection
 		/// </summary>
 		/// <returns></returns>
-		std::unique_ptr<Shape> GetIntersectionShape() const { return intersection->GetClone(); }
+		std::unique_ptr<Shape> GetIntersectionShape() const;
 
 		/// <summary>
 		/// Return a instance

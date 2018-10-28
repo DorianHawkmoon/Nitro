@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\test\analyser\Intersection.cpp" />
     <ClCompile Include="..\..\test\Main.cpp" />
     <ClCompile Include="..\..\test\serialization\ReaderTest.cpp" />
     <ClCompile Include="..\..\test\shapes\RectangleTest.cpp" />

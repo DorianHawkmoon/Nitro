@@ -22,6 +22,7 @@ namespace ShapeOverlay {
 		/// String representation of the shape
 		/// </summary>
 		virtual std::string ToString() = 0;
+		virtual std::string PositionString() = 0;
 		virtual std::string NameShape() = 0;
 
 		virtual std::unique_ptr<Shape> GetClone() const = 0;
