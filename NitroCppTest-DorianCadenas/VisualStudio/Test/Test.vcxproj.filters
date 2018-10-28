@@ -36,10 +36,16 @@
     <ClCompile Include="..\..\test\analyser\Intersection.cpp">
       <Filter>src\analyser</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\test\analyser\Analyser.cpp">
+      <Filter>src\analyser</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\test\serialization\ReaderTest.h">
       <Filter>src\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\analyser\Analyser.h">
+      <Filter>src\analyser</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

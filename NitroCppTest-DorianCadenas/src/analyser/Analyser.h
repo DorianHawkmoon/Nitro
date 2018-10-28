@@ -4,6 +4,7 @@
 
 #include "precompiled.h"
 #include "analyser/Intersection.h"
+#include <queue>
 
 namespace ShapeOverlay {
 	//forward declaration
@@ -14,6 +15,19 @@ namespace ShapeOverlay {
 	/// It implements a basic analyse. Can be inherited for better algorithms
 	/// </summary>
 	class Analyser {
+
+	private:
+		struct StateIntersection {
+			StateIntersection(int outer, int inner, const Intersection* inter)
+				: outerIt(outer), innerIt(inner), intersection(inter) {}
+
+			int outerIt;
+			int innerIt;
+			const Intersection* intersection;
+		};
+
+
+
 	public:
 		Analyser() : result() {};
 		~Analyser() = default;
@@ -39,6 +53,10 @@ namespace ShapeOverlay {
 		/// I use a member class
 		/// </summary>
 		std::vector<std::unique_ptr<Intersection>> result;
+		/// <summary>
+		/// I put all intersections here
+		/// </summary>
+		std::queue<StateIntersection> stateLastIntersections;
 
 	private:
 		void recursive(unsigned int outerIt, unsigned int innerIt, const Intersection* intersection, const std::vector<std::shared_ptr<Shape>>& shapes);

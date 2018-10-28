@@ -1,5 +1,6 @@
 #include "precompiled.h"
 #include "Intersection.h"
+#include <algorithm>
 
 namespace ShapeOverlay {
 	Intersection::Intersection(int id1, int id2, std::unique_ptr<Shape> shapeIntersection) 
@@ -39,7 +40,9 @@ namespace ShapeOverlay {
 			result << "No intersection";
 
 		} else {
-			result << "Between " << intersection->NameShape() << " ";
+			std::string lowerName = intersection->NameShape();
+			std::transform(lowerName.begin(), lowerName.end(), lowerName.begin(), ::tolower);
+			result << "Between " << lowerName << " ";
 
 			//write all involved shapes id
 			int size = idShapesIntersection.size()-1;
