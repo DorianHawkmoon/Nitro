@@ -18,28 +18,30 @@ void ReaderTest::TearDown() {
 TEST_F(NAME_CLASS, NumberShapes) {
 	//test if obey the limit of shapes
 	Reader reader;
-	std::vector<std::shared_ptr<Shape>> result = reader.ParseFileShapes("data/test/limits.json", 
-																	*factory.get(), 2);
+	reader.ParseFileShapes("data/test/limits.json",	*factory.get(), 2);
+	std::vector<std::shared_ptr<Shape>> result = reader.GetReadShapes();
 	EXPECT_EQ(result.size(), 2);
 	
 
 	result.clear();
-	result = reader.ParseFileShapes("data/test/limits.json",
-		*factory.get(), 5);
+	reader.ClearReadShapes();
+	reader.ParseFileShapes("data/test/limits.json",	*factory.get(), 5);
+	result = reader.GetReadShapes();
 	EXPECT_EQ(result.size(), 5);
 
 
 	result.clear();
-	result = reader.ParseFileShapes("data/test/limits.json",
-		*factory.get(), 10);
+	reader.ClearReadShapes();
+	reader.ParseFileShapes("data/test/limits.json",	*factory.get(), 10);
+	result = reader.GetReadShapes();
 	EXPECT_EQ(result.size(), 7); 
 }
 
 TEST_F(NAME_CLASS, ShapesCreated) {
 	//check if creates correctly the shapes
 	Reader reader;
-	std::vector<std::shared_ptr<Shape>> result = reader.ParseFileShapes("data/test/limits.json",
-		*factory.get(), 2);
+	reader.ParseFileShapes("data/test/limits.json",	*factory.get(), 2);
+	std::vector<std::shared_ptr<Shape>> result = reader.GetReadShapes();
 	ASSERT_EQ(result.size(), 2);
 
 	//TODO improve test
@@ -66,8 +68,7 @@ TEST_F(NAME_CLASS, Exceptions) {
 	//error shape not registered
 	EXPECT_THROW({
 			try {
-				std::vector<std::shared_ptr<Shape>> result = reader.ParseFileShapes("data/test/strangeshape.json",
-																					*factory.get(), 2);
+				reader.ParseFileShapes("data/test/strangeshape.json", *factory.get(), 2);
 			} catch (const std::exception& error) {
 				// tests that it has the correct message
 				EXPECT_STREQ("Reader::ParseFileShape Error, there is no registered shape", error.what());
@@ -78,8 +79,7 @@ TEST_F(NAME_CLASS, Exceptions) {
 	//error not validated
 	EXPECT_THROW({
 			try {
-				std::vector<std::shared_ptr<Shape>> result = reader.ParseFileShapes("data/test/malformed.json",
-																				*factory.get(), 2);
+				reader.ParseFileShapes("data/test/malformed.json", *factory.get(), 2);
 			} catch (const std::exception& error) {
 				EXPECT_TRUE(std::string(error.what()).find("Error parsing json file") != std::string::npos);
 				throw;
@@ -90,8 +90,7 @@ TEST_F(NAME_CLASS, Exceptions) {
 	//error shape with not enough parameters
 	EXPECT_THROW({
 			try {
-				std::vector<std::shared_ptr<Shape>> result = reader.ParseFileShapes("data/test/notenoughparameters.json",
-																					*factory.get(), 2);
+				reader.ParseFileShapes("data/test/notenoughparameters.json", *factory.get(), 2);
 			} catch (const std::exception& error) {
 				EXPECT_TRUE(std::string(error.what()).find("Deserialize Lack of arguments") != std::string::npos);
 				throw;
@@ -101,8 +100,7 @@ TEST_F(NAME_CLASS, Exceptions) {
 
 	//error shape with wrong parameters
 	EXPECT_THROW({
-				std::vector<std::shared_ptr<Shape>> result = reader.ParseFileShapes("data/test/wrongparameters.json",
-																					*factory.get(), 2);
+				reader.ParseFileShapes("data/test/wrongparameters.json", *factory.get(), 2);
 		}, std::exception);
 
 }

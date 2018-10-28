@@ -17,8 +17,6 @@ namespace ShapeOverlay {
 		Shape() = default;
 		virtual ~Shape() = default;
 
-		NO_COPY_CLASS(Shape);
-
 		//TODO make tests
 		/// <summary>
 		/// String representation of the shape
