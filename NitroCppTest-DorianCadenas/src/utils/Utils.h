@@ -44,8 +44,8 @@ namespace ShapeOverlay {
 		/// </summary>
 		template<>
 		struct Vector2<char> {
-			Vector2() { throw std::exception("Vector2 => Invalid data type."); };
-			Vector2(char x, char y) { throw std::exception(); }
+			Vector2() { throw std::runtime_error("Vector2 => Invalid data type."); };
+			Vector2(char x, char y) { throw std::runtime_error("Vector2 => Invalid data type."); }
 		};
 
 		/// <summary>
@@ -53,8 +53,8 @@ namespace ShapeOverlay {
 		/// </summary>
 		template<>
 		struct Vector2<std::string> {
-			Vector2() { throw std::exception(); };
-			Vector2(std::string x, std::string y) { throw std::exception("Vector2 => Invalid data type."); }
+			Vector2() { throw std::runtime_error("Vector2 => Invalid data type."); };
+			Vector2(std::string x, std::string y) { throw std::runtime_error("Vector2 => Invalid data type."); }
 		};
 
 		/// <summary>
@@ -62,8 +62,8 @@ namespace ShapeOverlay {
 		/// </summary>
 		template<>
 		struct Vector2<bool> {
-			Vector2() { throw std::exception(); };
-			Vector2(bool x, bool y) { throw std::exception("Vector2 => Invalid data type."); }
+			Vector2() { throw std::runtime_error("Vector2 => Invalid data type."); };
+			Vector2(bool x, bool y) { throw std::runtime_error("Vector2 => Invalid data type."); }
 		};
 	}
 }

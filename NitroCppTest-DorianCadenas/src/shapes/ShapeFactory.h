@@ -80,7 +80,7 @@ namespace ShapeOverlay {
 	
 
 			if (factories.find(name) != factories.end()) {
-				throw std::exception("ShapeFactory::Register => Id/name already exists.");
+				throw std::runtime_error("ShapeFactory::Register => Id/name already exists.");
 			}
 
 			//store the creator of the specific class
