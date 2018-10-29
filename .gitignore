@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 
 !NitroCppTest-DorianCadenas/external/jsoncpp-1.8.4/makefiles/msvc2010/*
+!NitroCppTest-DorianCadenas/VisualStudio/*
