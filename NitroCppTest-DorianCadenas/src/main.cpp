@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 	std::shared_ptr<Config> config = std::make_shared<Config>();
 
 	//create the program itself with the given configuration
-	ShapeIntersection shapeIntersection = ShapeIntersection(config);
+	ShapeIntersection shapeIntersection(config);
 
 	//execute the program given the json filename to process
 	shapeIntersection.ReportIntersections(filename);

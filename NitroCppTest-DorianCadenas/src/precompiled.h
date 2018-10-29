@@ -8,7 +8,6 @@
 #include <memory>
 #include <vector>
 
-#include "utils/Log.h"
 #include "utils/Utils.h"
 
 #endif // !PRECOMPILED_H

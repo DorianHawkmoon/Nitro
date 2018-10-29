@@ -33,9 +33,6 @@
     <ClCompile Include="..\..\src\serialization\Reader.cpp">
       <Filter>src\serialization</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\utils\Log.cpp">
-      <Filter>src\utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\analyser\Analyser.cpp">
       <Filter>src\analyser</Filter>
     </ClCompile>
@@ -64,9 +61,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\serialization\ISerializable.h">
       <Filter>src\serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\Log.h">
-      <Filter>src\utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\utils\Utils.h">
       <Filter>src\utils</Filter>

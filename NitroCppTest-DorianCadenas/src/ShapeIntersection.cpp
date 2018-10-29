@@ -26,7 +26,6 @@ namespace ShapeOverlay {
 			std::vector<std::shared_ptr<Shape>> shapes = reader.GetReadShapes();
 
 			if (shapes.size() == 0) {
-				LOG("No shapes to analyze\n");
 				std::cout << "No shapes to analyze" << std::endl;
 
 			} else {
@@ -52,13 +51,9 @@ namespace ShapeOverlay {
 				}
 
 				//show results
-				LOG(buildResult.str().c_str());
 				std::cout << buildResult.str();
 			}
 		} catch (const std::exception& e) {
-			std::stringstream error;
-			error << "ShapeIntersection::ReportIntersection => Error: " << e.what() << std::endl;
-			LOG(error.str().c_str());
 			std::cout << "ShapeIntersection::ReportIntersection = > Error: " << e.what() << std::endl;
 		}
 	}
