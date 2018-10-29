@@ -5,6 +5,7 @@
 /// <summary>
 /// Deal with the difference between linux/unix and windows in the output of std::cout
 /// Can choose between showing through the terminal or using the output of visual studio
+/// Mainly used for development
 /// </summary>
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
 

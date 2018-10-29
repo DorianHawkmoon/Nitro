@@ -29,7 +29,7 @@ TEST_F(NAME_CLASS, NoIntersection) {
 	shapes.push_back(std::shared_ptr<Shape>(new Rectangle(100, 10, 50, 50)));
 	EXPECT_FALSE(analyser->Analyze(shapes));
 
-	EXPECT_STREQ(analyser->GetResults().c_str(),"No intersections");
+	EXPECT_STREQ(analyser->GetResults().c_str(),"No intersections.\n");
 }
 
 TEST_F(NAME_CLASS, BasicIntersection) {

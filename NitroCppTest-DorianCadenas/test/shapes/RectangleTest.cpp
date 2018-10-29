@@ -36,7 +36,7 @@ TEST(NAME_CLASS, SizeZero) {
 			try {
 				rectangle.Deserialize(json);
 			} catch (const std::invalid_argument& error) {
-				EXPECT_STREQ("Rectangle::Deserialize Size should be positive", error.what());
+				EXPECT_STREQ("Rectangle::Deserialize => Size should be positive.", error.what());
 				throw;
 			}
 		}, std::invalid_argument);
@@ -51,7 +51,7 @@ TEST(NAME_CLASS, SizeZero) {
 			try {
 				rectangle.Deserialize(json);
 			} catch (const std::invalid_argument& error) {
-				EXPECT_STREQ("Rectangle::Deserialize Size should be positive", error.what());
+				EXPECT_STREQ("Rectangle::Deserialize => Size should be positive.", error.what());
 				throw;
 			}
 		}, std::invalid_argument);
@@ -65,7 +65,7 @@ TEST(NAME_CLASS, SizeZero) {
 			try {
 				rectangle.Deserialize(json);
 			} catch (const std::invalid_argument& error) {
-				EXPECT_STREQ("Rectangle::Deserialize Size should be positive", error.what());
+				EXPECT_STREQ("Rectangle::Deserialize => Size should be positive.", error.what());
 				throw;
 			}
 		}, std::invalid_argument);
@@ -85,7 +85,7 @@ TEST(NAME_CLASS, TopLeftPoint) {
 			try {
 				rectangle.Deserialize(json);
 			} catch (const std::invalid_argument& error) {
-				EXPECT_STREQ("Rectangle::Deserialize top left point should be positive", error.what());
+				EXPECT_STREQ("Rectangle::Deserialize => top left point should be positive.", error.what());
 				throw;
 			}
 		}, std::invalid_argument);
@@ -95,7 +95,7 @@ TEST(NAME_CLASS, TopLeftPoint) {
 			try {
 				rectangle.Deserialize(json);
 			} catch (const std::invalid_argument& error) {
-				EXPECT_STREQ("Rectangle::Deserialize top left point should be positive", error.what());
+				EXPECT_STREQ("Rectangle::Deserialize => top left point should be positive.", error.what());
 				throw;
 			}
 		}, std::invalid_argument);
@@ -128,7 +128,7 @@ TEST(NAME_CLASS, Sizes) {
 			try {
 				rectangle.Deserialize(json);
 			} catch (const std::invalid_argument& error) {
-				EXPECT_STREQ("Rectangle::Deserialize Size should be positive", error.what());
+				EXPECT_STREQ("Rectangle::Deserialize => Size should be positive.", error.what());
 				throw;
 			}
 		}, std::invalid_argument);
@@ -138,7 +138,7 @@ TEST(NAME_CLASS, Sizes) {
 			try {
 				rectangle.Deserialize(json);
 			} catch (const std::invalid_argument& error) {
-				EXPECT_STREQ("Rectangle::Deserialize Size should be positive", error.what());
+				EXPECT_STREQ("Rectangle::Deserialize => Size should be positive.", error.what());
 				throw;
 			}
 		}, std::invalid_argument);
@@ -181,7 +181,7 @@ TEST(NAME_CLASS, IncorrectParameters) {
 				try {
 					rectangle.Deserialize(json);
 				} catch (const std::invalid_argument& error) {
-					EXPECT_STREQ("Rectangle::Deserialize Lack of arguments", error.what());
+					EXPECT_STREQ("Rectangle::Deserialize => Lack of arguments.", error.what());
 					throw;
 				}
 			}, std::invalid_argument);
@@ -193,7 +193,7 @@ TEST(NAME_CLASS, IncorrectParameters) {
 				try {
 					rectangle.Deserialize(json);
 				} catch (const std::invalid_argument& error) {
-					EXPECT_STREQ("Rectangle::Deserialize Lack of arguments", error.what());
+					EXPECT_STREQ("Rectangle::Deserialize => Lack of arguments.", error.what());
 					throw;
 				}
 			}, std::invalid_argument);

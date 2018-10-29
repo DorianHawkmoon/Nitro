@@ -29,7 +29,7 @@ TEST(NAME_CLASS, FailRegister) {
 				factory.Register<Rectangle>("test"); //test register again with same id
 			} catch (const std::exception& error) {
 				// tests that it has the correct message
-				EXPECT_STREQ("ShapeFactory::Register Id/name already exists.", error.what());
+				EXPECT_STREQ("ShapeFactory::Register => Id/name already exists.", error.what());
 				throw;
 			}
 		}, std::exception);

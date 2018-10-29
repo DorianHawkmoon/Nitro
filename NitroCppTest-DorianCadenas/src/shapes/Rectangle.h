@@ -14,7 +14,6 @@ namespace ShapeOverlay {
 
 	public:
 		Rectangle();
-		//TODO test
 		Rectangle(Maths::Vector2<int> topLeft, Maths::Vector2<int> size);
 		Rectangle(int top, int left, int width, int height);
 		~Rectangle() = default;

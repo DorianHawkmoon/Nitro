@@ -17,8 +17,8 @@ int main(int argc, char *argv[]) {
 
 	//check if givenf ile
 	if (argc <= 1) { //first argument is the executable itself
-		LOG("It is possible to give an input JSON file as an argument.\n");
-		LOG("I will use data/example.json for demostration purposes.\n");
+		std::cout << "It is possible to give an input JSON file as an argument." << std::endl;
+		std::cout << "I will use data/example.json for demostration purposes." << std::endl <<std::endl;
 		filename = "data/example.json";
 
 	} else {

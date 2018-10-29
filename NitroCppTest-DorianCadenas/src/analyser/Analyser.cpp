@@ -34,7 +34,7 @@ namespace ShapeOverlay {
 				toString << intersection->ToString() << ".\n";
 			}
 		} else {
-			toString << "No intersections";
+			toString << "No intersections.\n";
 		}
 		return toString.str();
 	}

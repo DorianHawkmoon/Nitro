@@ -26,15 +26,13 @@ namespace ShapeOverlay {
 			std::vector<std::shared_ptr<Shape>> shapes = reader.GetReadShapes();
 
 			if (shapes.size() == 0) {
-				LOG("No shapes to analyze");
+				LOG("No shapes to analyze\n");
+				std::cout << "No shapes to analyze" << std::endl;
+
 			} else {
-				//pass the list of shapes to the analyzer TODO
-				//create the analyzer and pass it the vector
 				Analyser analyser;
 				bool results = analyser.Analyze(shapes);
 
-
-				//get the results from the analyzer and display TODO
 				std::stringstream buildResult;
 
 				//write the shapes input read
@@ -47,18 +45,21 @@ namespace ShapeOverlay {
 				if (results) {
 					//write the rectangle intersections
 					buildResult << "Intersections:\n";
-					//TODO read the results and write the response
 					buildResult << analyser.GetResults();
 
 				} else {
 					buildResult << "No intersections.\n";
 				}
-				//print results TODO see LOG or just iostream(results!!)
+
+				//show results
 				LOG(buildResult.str().c_str());
+				std::cout << buildResult.str();
 			}
 		} catch (const std::exception& e) {
-
-			//TODO treat the exceptions
+			std::stringstream error;
+			error << "ShapeIntersection::ReportIntersection => Error: " << e.what() << std::endl;
+			LOG(error.str().c_str());
+			std::cout << "ShapeIntersection::ReportIntersection = > Error: " << e.what() << std::endl;
 		}
 	}
 

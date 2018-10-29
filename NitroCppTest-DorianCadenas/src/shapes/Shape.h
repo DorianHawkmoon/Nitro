@@ -17,7 +17,6 @@ namespace ShapeOverlay {
 		Shape() = default;
 		virtual ~Shape() = default;
 
-		//TODO make tests
 		/// <summary>
 		/// String representation of the shape
 		/// </summary>
@@ -25,13 +24,16 @@ namespace ShapeOverlay {
 		virtual std::string PositionString() = 0;
 		virtual std::string NameShape() = 0;
 
+		/// <summary>
+		/// Get a clone of the shape
+		/// </summary>
+		/// <returns></returns>
 		virtual std::unique_ptr<Shape> GetClone() const = 0;
 
 		virtual void Serialize(const Json::Value& serializer) = 0;
 		virtual void Deserialize(const Json::Value& serializer) = 0;
 
 	public:
-		//TODO test
 		/// <summary>
 		/// Generic method to call when trying
 		/// </summary>

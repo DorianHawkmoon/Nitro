@@ -61,7 +61,7 @@ TEST_F(NAME_CLASS, Exceptions) {
 				reader.ParseFileShapes("data/test/nonexists.json", *factory.get(), 2);
 			} catch (const std::exception& error) {
 				// tests that it has the correct message
-				EXPECT_STREQ("Reader::ParseFileShape Error with the file. Is it exists?", error.what());
+				EXPECT_STREQ("Reader::ParseFileShape => Error with the file. Is it exists?", error.what());
 				throw;
 			}
 		}, std::exception);
@@ -73,7 +73,7 @@ TEST_F(NAME_CLASS, Exceptions) {
 				reader.ParseFileShapes("data/test/strangeshape.json", *factory.get(), 2);
 			} catch (const std::exception& error) {
 				// tests that it has the correct message
-				EXPECT_STREQ("Reader::ParseFileShape Error, there is no registered shape", error.what());
+				EXPECT_STREQ("Reader::ParseFileShape => Error, there is no registered shape.", error.what());
 				throw;
 			}
 		}, std::exception);
@@ -94,7 +94,7 @@ TEST_F(NAME_CLASS, Exceptions) {
 			try {
 				reader.ParseFileShapes("data/test/notenoughparameters.json", *factory.get(), 2);
 			} catch (const std::exception& error) {
-				EXPECT_TRUE(std::string(error.what()).find("Deserialize Lack of arguments") != std::string::npos);
+				EXPECT_TRUE(std::string(error.what()).find("Deserialize => Lack of arguments.") != std::string::npos);
 				throw;
 			}
 		}, std::exception);

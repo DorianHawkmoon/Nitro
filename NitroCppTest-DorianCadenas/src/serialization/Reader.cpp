@@ -1,6 +1,5 @@
 #include "precompiled.h"
 #include "Reader.h"
-
 #include <fstream>    
 
 namespace ShapeOverlay {
@@ -10,7 +9,7 @@ namespace ShapeOverlay {
 
 		std::ifstream configFile(filename, std::ifstream::binary);
 		if (!configFile.good()) {
-			throw std::exception("Reader::ParseFileShape Error with the file. Is it exists?");
+			throw std::exception("Reader::ParseFileShape => Error with the file. Is it exists?");
 		}
 		
 		//read and parse the file
@@ -18,7 +17,7 @@ namespace ShapeOverlay {
 		std::string errors;
 		bool parsed = Json::parseFromStream(builder, configFile, &shapes, &errors);
 		if (!parsed) {
-			std::string message("Reader::ParseFileShape Error parsing json file: " + errors);
+			std::string message("Reader::ParseFileShape => Error parsing json file: " + errors);
 			throw std::exception(message.c_str());
 		}
 
@@ -34,7 +33,7 @@ namespace ShapeOverlay {
 
 				//control if we don't have this figure registered
 				if (shape == nullptr) {
-					throw std::exception("Reader::ParseFileShape Error, there is no registered shape");
+					throw std::exception("Reader::ParseFileShape => Error, there is no registered shape.");
 				} else {
 					shape->Deserialize(*itShapes);
 					//store and continue
@@ -43,7 +42,6 @@ namespace ShapeOverlay {
 				}
 			}
 		}
-		//TODO improve exceptions messages
 
 		//ifstream is RAII compliant, no need to close file, will be when out of scope
 	}

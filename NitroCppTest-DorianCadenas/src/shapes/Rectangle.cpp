@@ -15,12 +15,12 @@ namespace ShapeOverlay {
 		//perfom checks
 			//size higher than zero
 		if (size.x <= 0 || size.y <= 0) {
-			throw std::invalid_argument("Rectangle::Deserialize Size should be positive");
+			throw std::invalid_argument("Rectangle::Constructor => Size should be positive.");
 		}
 
 		//top left zero or greater
 		if (topLeft.x < 0 || topLeft.y < 0) {
-			throw std::invalid_argument("Rectangle::Deserialize top left point should be positive");
+			throw std::invalid_argument("Rectangle::Constructor => top left point should be positive.");
 		}
 	}
 
@@ -64,7 +64,6 @@ namespace ShapeOverlay {
 		return std::string("Rectangle");
 	}
 
-	//TODO test
 	std::unique_ptr<Shape> Rectangle::GetClone() const {
 		return std::unique_ptr<Shape>(new Rectangle(topLeft, size));;
 	}
@@ -77,7 +76,7 @@ namespace ShapeOverlay {
 		memberExists &= serializer.isMember("h");
 
 		if (!memberExists) {
-			throw std::invalid_argument("Rectangle::Deserialize Lack of arguments");
+			throw std::invalid_argument("Rectangle::Deserialize => Lack of arguments.");
 		}
 
 		topLeft.x = serializer["x"].asInt();
@@ -89,12 +88,12 @@ namespace ShapeOverlay {
 		//perfom checks
 		//size higher than zero
 		if (size.x <= 0 || size.y <= 0) {
-			throw std::invalid_argument("Rectangle::Deserialize Size should be positive");
+			throw std::invalid_argument("Rectangle::Deserialize => Size should be positive.");
 		}
 
 		//top left zero or greater
 		if (topLeft.x < 0 || topLeft.y < 0) {
-			throw std::invalid_argument("Rectangle::Deserialize top left point should be positive");
+			throw std::invalid_argument("Rectangle::Deserialize => top left point should be positive.");
 		}
 
 	}
