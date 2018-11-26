@@ -28,42 +28,19 @@ namespace ShapeOverlay {
 
 	namespace Maths {
 
-		template <typename T>
+		/// <summary>
+		/// Only arithmetic
+		/// (SFINAE approach)
+		/// </summary>
+		template <typename T, typename = std::enable_if_t<std::is_arithmetic<T>::value 
+														&& !std::is_same<bool, T>::value
+														&& !std::is_same<char, T>::value>>
 		struct Vector2 {
-			static_assert(std::is_arithmetic<T>::value, "Vector2 => Type must be numeric.");
-
 			Vector2() = default;
 			Vector2(T x, T y) :x(x), y(y) {}
 
 			T x = 0;
 			T y = 0;
-		};
-
-		/// <summary>
-		/// Invalidate char vectors
-		/// </summary>
-		template<>
-		struct Vector2<char> {
-			Vector2() { throw std::runtime_error("Vector2 => Invalid data type."); };
-			Vector2(char x, char y) { throw std::runtime_error("Vector2 => Invalid data type."); }
-		};
-
-		/// <summary>
-		/// Invalidate strings
-		/// </summary>
-		template<>
-		struct Vector2<std::string> {
-			Vector2() { throw std::runtime_error("Vector2 => Invalid data type."); };
-			Vector2(std::string x, std::string y) { throw std::runtime_error("Vector2 => Invalid data type."); }
-		};
-
-		/// <summary>
-		/// Invalidate bools
-		/// </summary>
-		template<>
-		struct Vector2<bool> {
-			Vector2() { throw std::runtime_error("Vector2 => Invalid data type."); };
-			Vector2(bool x, bool y) { throw std::runtime_error("Vector2 => Invalid data type."); }
 		};
 	}
 }
