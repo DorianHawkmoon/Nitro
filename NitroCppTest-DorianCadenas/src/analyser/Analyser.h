@@ -18,6 +18,16 @@ namespace ShapeOverlay {
 
 	private:
 		struct StateIntersection {
+			StateIntersection() = default;
+			
+			StateIntersection(const StateIntersection &other) = default; //copy constructor
+			StateIntersection(StateIntersection &&) = default; //move constructor
+
+			StateIntersection & operator=(const StateIntersection &other) = default; //copy assignment
+			StateIntersection & operator=(StateIntersection &&) = default; //move assignment
+
+			~StateIntersection() = default;
+
 			StateIntersection(int outer, int inner, const Intersection* inter)
 				: outerIt(outer), innerIt(inner), intersection(inter) {}
 
