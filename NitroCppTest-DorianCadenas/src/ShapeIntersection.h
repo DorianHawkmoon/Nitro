@@ -4,7 +4,6 @@
 
 #include "precompiled.h"
 #include "shapes/ShapeFactory.h"
-#include "serialization/Reader.h"
 #include "utils/Config.h"
 
 namespace ShapeOverlay {

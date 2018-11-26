@@ -1,4 +1,5 @@
 #include "precompiled.h"
+#include "serialization/Reader.h"
 #include "ShapeIntersection.h"
 #include "shapes/AllShapes.h"
 #include "analyser/Analyser.h"
