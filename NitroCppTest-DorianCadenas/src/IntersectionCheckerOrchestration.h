@@ -1,27 +1,28 @@
 #pragma once
-#ifndef SHAPE_INTERSECTION_H
-#define SHAPE_INTERSECTION_H
+#ifndef INTERSECTION_CHECKER_ORCHESTRARION_H
+#define INTERSECTION_CHECKER_ORCHESTRARION_H
 
 #include "precompiled.h"
 #include "shapes/ShapeFactory.h"
 #include "utils/Config.h"
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 	/// <summary>
 	/// Main class of the program, it control the flow
 	/// </summary>
-	class ShapeIntersection {
+	class IntersectionCheckerOrchestration {
 	public:
 		/// <summary>
 		/// Create object and register all the shapes
 		/// </summary>
-		ShapeIntersection(std::shared_ptr<Config> config);
-		~ShapeIntersection() = default;
+		IntersectionCheckerOrchestration(std::shared_ptr<Config> config);
+		~IntersectionCheckerOrchestration() = default;
 
 		/// <summary>
 		/// It doesn't mean to be copyable
 		/// </summary>
-		NO_COPY_CLASS(ShapeIntersection);
+		IntersectionCheckerOrchestration(const IntersectionCheckerOrchestration&) = delete;
+		IntersectionCheckerOrchestration& operator=(const IntersectionCheckerOrchestration&) = delete;
 
 	private:
 		ShapeFactory shapeFactory; //factory of all shapes
@@ -38,4 +39,4 @@ namespace ShapeOverlay {
 
 }
 
-#endif // !SHAPE_INTERSECTION_H
+#endif // !INTERSECTION_CHECKER_ORCHESTRARION_H

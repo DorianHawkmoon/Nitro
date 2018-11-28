@@ -4,7 +4,7 @@
 
 #include "precompiled.h"
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 	/// <summary>
 	/// Clase for possible configuration of the program
 	/// such the limit of shapes to read from the json

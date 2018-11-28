@@ -7,7 +7,7 @@
 
 #define NAME_CLASS AnalyserTest
 
-using namespace ShapeOverlay;
+using namespace IntersectionChecker;
 
 class AnalyserTest : public ::testing::Test {
 protected:

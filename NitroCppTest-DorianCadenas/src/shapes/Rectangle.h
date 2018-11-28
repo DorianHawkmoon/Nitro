@@ -6,7 +6,7 @@
 #include "Shape.h"
 #include "json/json.h"
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 	/// <summary>
 	/// A rectangle shape class
 	/// </summary>

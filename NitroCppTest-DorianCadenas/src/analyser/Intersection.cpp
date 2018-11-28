@@ -2,7 +2,7 @@
 #include "Intersection.h"
 #include <algorithm>
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 	Intersection::Intersection(int id1, int id2, std::unique_ptr<Shape> shapeIntersection) 
 		: idShapesIntersection{id1,id2}, intersection(std::move(shapeIntersection))
 	{	}

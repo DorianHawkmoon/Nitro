@@ -2,7 +2,7 @@
 #include "Reader.h"
 #include <fstream>    
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 
 	void Reader::ParseFileShapes(const std::string & filename, const ShapeFactory& factory, int maxNumberShapes) {
 		Json::Value shapes;

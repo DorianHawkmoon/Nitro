@@ -1,12 +1,12 @@
 #include "precompiled.h"
 #include "serialization/Reader.h"
-#include "ShapeIntersection.h"
+#include "IntersectionCheckerOrchestration.h"
 #include "shapes/AllShapes.h"
 #include "analyser/Analyser.h"
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 
-	ShapeIntersection::ShapeIntersection(std::shared_ptr<Config> config)
+	IntersectionCheckerOrchestration::IntersectionCheckerOrchestration(std::shared_ptr<Config> config)
 		: shapeFactory(),
 		config(config)
 	{
@@ -16,7 +16,7 @@ namespace ShapeOverlay {
 	}
 
 
-	void ShapeIntersection::ReportIntersections(const std::string & filenameShapes) {
+	void IntersectionCheckerOrchestration::ReportIntersections(const std::string & filenameShapes) {
 		int maxNumberShapes = config->GetMaxNumberElements();
 
 		try {

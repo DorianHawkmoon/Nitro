@@ -4,7 +4,7 @@
 
 #define NAME_CLASS RectangleTest
 
-using namespace ShapeOverlay;
+using namespace IntersectionChecker;
 
 TEST(NAME_CLASS, CorrectRectangle) {
 	Json::Value json;

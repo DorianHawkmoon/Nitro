@@ -4,8 +4,8 @@
 
 #define NAME_CLASS UtilsTest
 
-using namespace ShapeOverlay::Maths;
-using namespace ShapeOverlay::Utils;
+using namespace IntersectionChecker::Maths;
+using namespace IntersectionChecker::Utils;
 
 /*
 TODO improve test for the SFINAE approach of the template

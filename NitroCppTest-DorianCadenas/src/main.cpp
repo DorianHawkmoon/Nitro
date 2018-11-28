@@ -1,9 +1,9 @@
 #include "precompiled.h"
 
-#include "ShapeIntersection.h"
+#include "IntersectionCheckerOrchestration.h"
 #include "utils/Config.h"
 
-using namespace ShapeOverlay;
+using namespace IntersectionChecker;
 
 /// <summary>
 /// Main entry of the shape overlay program
@@ -29,10 +29,10 @@ int main(int argc, char *argv[]) {
 	std::shared_ptr<Config> config = std::make_shared<Config>();
 
 	//create the program itself with the given configuration
-	ShapeIntersection shapeIntersection(config);
+	IntersectionCheckerOrchestration orchestration(config);
 
 	//execute the program given the json filename to process
-	shapeIntersection.ReportIntersections(filename);
+	orchestration.ReportIntersections(filename);
 
 	return 0;
 }

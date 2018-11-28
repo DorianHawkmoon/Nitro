@@ -4,7 +4,7 @@
 
 #define NAME_CLASS ShapeFactoryTest
 
-using namespace ShapeOverlay;
+using namespace IntersectionChecker;
 
 
 TEST(NAME_CLASS, RegisterAndCreate) {

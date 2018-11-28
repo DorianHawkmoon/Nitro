@@ -8,7 +8,7 @@
 #include "shapes/ShapeFactory.h"
 #include "shapes/Shape.h"
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 	/// <summary>
 	/// Base class reader
 	/// Given json filenames can read the shapes

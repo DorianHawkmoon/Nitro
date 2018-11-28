@@ -29,6 +29,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\analyser\Analyser.cpp" />
     <ClCompile Include="..\..\src\analyser\Intersection.cpp" />
+    <ClCompile Include="..\..\src\IntersectionCheckerOrchestration.cpp" />
     <ClCompile Include="..\..\src\main.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">precompiled.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">precompiled.h</PrecompiledHeaderFile>
@@ -52,16 +53,15 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Testing|x64'">precompiled.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="..\..\src\serialization\Reader.cpp" />
-    <ClCompile Include="..\..\src\ShapeIntersection.cpp" />
     <ClCompile Include="..\..\src\shapes\Rectangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\analyser\Analyser.h" />
     <ClInclude Include="..\..\src\analyser\Intersection.h" />
+    <ClInclude Include="..\..\src\IntersectionCheckerOrchestration.h" />
     <ClInclude Include="..\..\src\precompiled.h" />
     <ClInclude Include="..\..\src\serialization\ISerializable.h" />
     <ClInclude Include="..\..\src\serialization\Reader.h" />
-    <ClInclude Include="..\..\src\ShapeIntersection.h" />
     <ClInclude Include="..\..\src\shapes\AllShapes.h" />
     <ClInclude Include="..\..\src\shapes\Rectangle.h" />
     <ClInclude Include="..\..\src\shapes\Shape.h" />

@@ -24,9 +24,6 @@
     <ClCompile Include="..\..\src\precompiled.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\ShapeIntersection.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\shapes\Rectangle.cpp">
       <Filter>src\shapes</Filter>
     </ClCompile>
@@ -39,12 +36,12 @@
     <ClCompile Include="..\..\src\analyser\Intersection.cpp">
       <Filter>src\analyser</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\IntersectionCheckerOrchestration.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\precompiled.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\ShapeIntersection.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\shapes\Shape.h">
@@ -76,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\analyser\Intersection.h">
       <Filter>src\analyser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\IntersectionCheckerOrchestration.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

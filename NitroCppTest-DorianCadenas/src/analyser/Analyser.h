@@ -6,7 +6,7 @@
 #include "analyser/Intersection.h"
 #include <queue>
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 	//forward declaration
 	class Shape;
 
@@ -17,22 +17,22 @@ namespace ShapeOverlay {
 	class Analyser {
 
 	private:
-		struct StateIntersection {
-			StateIntersection() = default;
+		struct AnalysisIntersectionState {
+			AnalysisIntersectionState() = default;
 			
-			StateIntersection(const StateIntersection &other) = default; //copy constructor
-			StateIntersection(StateIntersection &&) = default; //move constructor
+			AnalysisIntersectionState(const AnalysisIntersectionState &other) = default; //copy constructor
+			AnalysisIntersectionState(AnalysisIntersectionState &&) = default; //move constructor
 
-			StateIntersection & operator=(const StateIntersection &other) = default; //copy assignment
-			StateIntersection & operator=(StateIntersection &&) = default; //move assignment
+			AnalysisIntersectionState & operator=(const AnalysisIntersectionState &other) = default; //copy assignment
+			AnalysisIntersectionState & operator=(AnalysisIntersectionState &&) = default; //move assignment
 
-			~StateIntersection() = default;
+			~AnalysisIntersectionState() = default;
 
-			StateIntersection(int outer, int inner, const Intersection* inter)
-				: outerIt(outer), innerIt(inner), intersection(inter) {}
+			AnalysisIntersectionState(int outer, int inner, const Intersection* inter)
+				: outerIndex(outer), innerIndex(inner), intersection(inter) {}
 
-			int outerIt;
-			int innerIt;
+			int outerIndex;
+			int innerIndex;
 			const Intersection* intersection;
 		};
 
@@ -66,10 +66,19 @@ namespace ShapeOverlay {
 		/// <summary>
 		/// I put all intersections here
 		/// </summary>
-		std::queue<StateIntersection> stateLastIntersections;
+		std::queue<AnalysisIntersectionState> stateLastIntersections;
 
 	private:
-		void recursive(unsigned int outerIt, unsigned int innerIt, const Intersection* intersection, const std::vector<std::shared_ptr<Shape>>& shapes);
+	/// <summary>
+	/// Iterate the vector of shapes given the indexs where to start
+	/// It adds the intersections found and store in the queue the state of the iteration
+	/// to later look for more shapes intersecting the found intersection
+	/// </summary>
+	/// <param name="outerIndex"></param>
+	/// <param name="innerIndex"></param>
+	/// <param name="intersection">null if comparing between shapes of the given vector, or an intersection to compare with</param>
+	/// <param name="shapes">vector of shapes to iterate</param>
+		void CheckIntersections(unsigned int outerIt, unsigned int innerIt, const Intersection* intersection, const std::vector<std::shared_ptr<Shape>>& shapes);
 	};
 
 }

@@ -2,7 +2,7 @@
 #include "serialization/Reader.h"
 #include "shapes/Rectangle.h"
 
-using namespace ShapeOverlay;
+using namespace IntersectionChecker;
 
 void ReaderTest::SetUp() {
 	factory = std::make_unique<ShapeFactory>();

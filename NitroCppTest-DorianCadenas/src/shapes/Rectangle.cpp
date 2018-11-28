@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "utils/Utils.h"
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 	Rectangle::Rectangle()
 		: topLeft(), size()
 	{}

@@ -5,7 +5,7 @@
 #include "precompiled.h"
 #include "json/forwards.h"
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 	class ISerializable {
 		virtual void Serialize(const Json::Value& serializer) = 0;
 		virtual void Deserialize(const Json::Value& serializer) = 0;

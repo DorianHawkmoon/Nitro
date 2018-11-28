@@ -5,7 +5,7 @@
 #include "serialization/ISerializable.h"
 #include "json/json.h"
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 	//fast-forward declaration of specific shapes
 	class Rectangle;
 

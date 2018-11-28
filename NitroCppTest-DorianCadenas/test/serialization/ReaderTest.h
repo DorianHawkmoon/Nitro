@@ -8,7 +8,7 @@
 
 #define NAME_CLASS ReaderTest
 
-using namespace ShapeOverlay;
+using namespace IntersectionChecker;
 
 class ReaderTest : public ::testing::Test {
 protected:

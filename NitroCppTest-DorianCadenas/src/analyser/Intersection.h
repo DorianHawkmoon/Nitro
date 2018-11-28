@@ -5,7 +5,7 @@
 #include "precompiled.h"
 #include "shapes/Shape.h"
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 	/// <summary>
 	/// Class for details about the intersection between shapes
 	/// It store a shape result of the intersection and the identity of the shapes involved
@@ -17,7 +17,9 @@ namespace ShapeOverlay {
 	public:
 		Intersection(int id1, int id2, std::unique_ptr<Shape> shapeIntersection = nullptr);
 		~Intersection() = default;
-		NO_COPY_CLASS(Intersection);
+
+		Intersection(const Intersection&) = delete;
+		Intersection& operator=(const Intersection&) = delete;
 
 	private:
 		Intersection(const std::vector<int> idShapesIntersection, std::unique_ptr<Shape> intersection);

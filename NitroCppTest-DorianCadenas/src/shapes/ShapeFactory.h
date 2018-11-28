@@ -9,14 +9,15 @@
 #include "Shape.h"
 
 
-namespace ShapeOverlay {
+namespace IntersectionChecker {
 
 	class ShapeFactory {
 	public:
 		ShapeFactory() = default;
 		~ShapeFactory() = default;
 
-		NO_COPY_CLASS(ShapeFactory);
+		ShapeFactory(const ShapeFactory&) = delete;
+		ShapeFactory& operator=(const ShapeFactory&) = delete;
 
 
 	private:

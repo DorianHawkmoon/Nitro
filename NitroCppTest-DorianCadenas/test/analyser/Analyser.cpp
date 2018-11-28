@@ -1,7 +1,7 @@
 #include "Analyser.h"
 #include "shapes/AllShapes.h"
 
-using namespace ShapeOverlay;
+using namespace IntersectionChecker;
 
 void AnalyserTest::SetUp() {
 	analyser = std::make_unique<Analyser>();

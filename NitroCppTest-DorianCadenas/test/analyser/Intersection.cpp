@@ -4,7 +4,7 @@
 
 #define NAME_CLASS IntersectionTest
 
-using namespace ShapeOverlay;
+using namespace IntersectionChecker;
 
 //constructor
 TEST(NAME_CLASS, Constructor) {
