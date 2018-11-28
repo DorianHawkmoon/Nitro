@@ -17,8 +17,7 @@ namespace IntersectionChecker {
 		std::string errors;
 		bool parsed = Json::parseFromStream(builder, configFile, &shapes, &errors);
 		if (!parsed) {
-			std::string message("Reader::ParseFileShape => Error parsing json file: " + errors);
-			throw std::runtime_error(message.c_str());
+			throw std::runtime_error(std::string("Reader::ParseFileShape => Error parsing json file: " + errors).c_str());
 		}
 
 		//iterate the differents shapes
