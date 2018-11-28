@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 		filename = "data/example.json";
 
 	} else {
-		filename = std::string(argv[2]);
+		filename = std::string(argv[1]);
 	}
 
 	//create the configuration for the program

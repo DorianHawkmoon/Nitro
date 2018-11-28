@@ -72,10 +72,10 @@ TEST(NAME_CLASS, SizeZero) {
 }
 
 TEST(NAME_CLASS, TopLeftPoint) {
-	//check the point is positive
+	//check the point is integer
 	Json::Value json;
 
-	json["x"] = -100;
+	json["x"] = -100.6;
 	json["y"] = 150;
 	json["w"] = 200;
 	json["h"] = 300;
@@ -85,27 +85,64 @@ TEST(NAME_CLASS, TopLeftPoint) {
 			try {
 				rectangle.Deserialize(json);
 			} catch (const std::invalid_argument& error) {
-				EXPECT_STREQ("Rectangle::Deserialize => top left point should be positive.", error.what());
+				EXPECT_STREQ("Rectangle::Deserialize => top left point should be integer.", error.what());
 				throw;
 			}
 		}, std::invalid_argument);
 
-	json["y"] = -150;
+	json["y"] = -150.1;
 	EXPECT_THROW({
 			try {
 				rectangle.Deserialize(json);
 			} catch (const std::invalid_argument& error) {
-				EXPECT_STREQ("Rectangle::Deserialize => top left point should be positive.", error.what());
+				EXPECT_STREQ("Rectangle::Deserialize => top left point should be integer.", error.what());
 				throw;
 			}
 		}, std::invalid_argument);
 
-	//zero top left is valid
-	json["x"] = 0;
-	json["y"] = 0;
+	//integers are valid
+	json["x"] = -50;
+	json["y"] = -10;
 	EXPECT_NO_THROW({rectangle.Deserialize(json); });
-	EXPECT_TRUE(rectangle.GetTopLeft().x == 0);
-	EXPECT_TRUE(rectangle.GetTopLeft().y == 0);
+	EXPECT_TRUE(rectangle.GetTopLeft().x == -50);
+	EXPECT_TRUE(rectangle.GetTopLeft().y == -10);
+}
+
+TEST(NAME_CLASS, SizeInteger) {
+	//check the size is integer
+	Json::Value json;
+
+	json["x"] = -100;
+	json["y"] = 150;
+	json["w"] = 200.4;
+	json["h"] = 300;
+
+	Rectangle rectangle;
+	EXPECT_THROW({
+			try {
+				rectangle.Deserialize(json);
+			} catch (const std::invalid_argument& error) {
+				EXPECT_STREQ("Rectangle::Deserialize => Size should be integers.", error.what());
+				throw;
+			}
+		}, std::invalid_argument);
+
+	json["h"] = 150.1;
+	EXPECT_THROW({
+			try {
+				rectangle.Deserialize(json);
+			} catch (const std::invalid_argument& error) {
+				EXPECT_STREQ("Rectangle::Deserialize => Size should be integers.", error.what());
+				throw;
+			}
+		}, std::invalid_argument);
+
+	//integers are valid
+	json["w"] = 50;
+	json["h"] = 10;
+	EXPECT_NO_THROW({rectangle.Deserialize(json);});
+	EXPECT_TRUE(rectangle.GetSize().x == 50);
+	EXPECT_TRUE(rectangle.GetSize().y == 10);
 }
 
 TEST(NAME_CLASS, Sizes) {

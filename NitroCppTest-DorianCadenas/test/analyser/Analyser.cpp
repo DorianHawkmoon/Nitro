@@ -41,6 +41,22 @@ TEST_F(NAME_CLASS, BasicIntersection) {
 	EXPECT_STREQ(analyser->GetResults().c_str(), "Between rectangle 1 and 2 at (140,160), w=210, h=20.\n");
 }
 
+TEST_F(NAME_CLASS, IntersectionPointNegative) {
+	std::vector<std::shared_ptr<Shape>> shapes;
+	shapes.push_back(std::shared_ptr<Shape>(new Rectangle(-100, -100, 200, 200)));
+
+	shapes.push_back(std::shared_ptr<Shape>(new Rectangle(-110, -110, 20, 20)));
+	shapes.push_back(std::shared_ptr<Shape>(new Rectangle(20, -110, 20, 20)));
+	shapes.push_back(std::shared_ptr<Shape>(new Rectangle(20, 20, 30, 30)));
+	shapes.push_back(std::shared_ptr<Shape>(new Rectangle(-110, 20, 30, 30)));
+	EXPECT_TRUE(analyser->Analyze(shapes));
+
+	EXPECT_STREQ(analyser->GetResults().c_str(), "Between rectangle 1 and 2 at (-100,-100), w=10, h=10.\n\
+Between rectangle 1 and 3 at (20,-100), w=20, h=10.\n\
+Between rectangle 1 and 4 at (20,20), w=30, h=30.\n\
+Between rectangle 1 and 5 at (-100,20), w=20, h=30.\n");
+}
+
 TEST_F(NAME_CLASS, LotOfIntersections) {
 	std::vector<std::shared_ptr<Shape>> shapes;
 	shapes.push_back(std::shared_ptr<Shape>(new Rectangle(100, 100, 250, 80)));

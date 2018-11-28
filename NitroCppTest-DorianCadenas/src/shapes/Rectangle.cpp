@@ -13,14 +13,14 @@ namespace IntersectionChecker {
 		size(size)
 	{
 		//perfom checks
-			//size higher than zero
+		//size higher than zero
 		if (size.x <= 0 || size.y <= 0) {
 			throw std::invalid_argument("Rectangle::Constructor => Size should be positive.");
 		}
 
-		//top left zero or greater
-		if (topLeft.x < 0 || topLeft.y < 0) {
-			throw std::invalid_argument("Rectangle::Constructor => top left point should be positive.");
+		//top left should be integer
+		if (std::floor(topLeft.x) != topLeft.x || std::floor(topLeft.y) != topLeft.y) {
+			throw std::invalid_argument("Rectangle::Constructor => top left point should be integers.");
 		}
 	}
 
@@ -79,23 +79,30 @@ namespace IntersectionChecker {
 			throw std::invalid_argument("Rectangle::Deserialize => Lack of arguments.");
 		}
 
+		bool isInteger = true;
+		isInteger &= serializer["x"].isIntegral();
+		isInteger &= serializer["y"].isIntegral();
+		if (!isInteger) {
+			throw std::invalid_argument("Rectangle::Deserialize => top left point should be integer.");
+		}
+
+		isInteger &= serializer["w"].isIntegral();
+		isInteger &= serializer["h"].isIntegral();
+		if (!isInteger) {
+			throw std::invalid_argument("Rectangle::Deserialize => Size should be integers.");
+		}
+
+
 		topLeft.x = serializer["x"].asInt();
 		topLeft.y = serializer["y"].asInt();
 
 		size.x = serializer["w"].asInt();
 		size.y = serializer["h"].asInt();
 
-		//perfom checks
-		//size higher than zero
+		//check size higher than or equal zero
 		if (size.x <= 0 || size.y <= 0) {
 			throw std::invalid_argument("Rectangle::Deserialize => Size should be positive.");
 		}
-
-		//top left zero or greater
-		if (topLeft.x < 0 || topLeft.y < 0) {
-			throw std::invalid_argument("Rectangle::Deserialize => top left point should be positive.");
-		}
-
 	}
 
 	void Rectangle::Serialize(const Json::Value & serializer) {}
